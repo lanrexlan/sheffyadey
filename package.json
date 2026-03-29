@@ -1,0 +1,20 @@
+{
+  "name": "sheffyadey",
+  "version": "1.0.0",
+  "description": "A simple web project with Vercel Analytics",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static HTML project - no build needed'",
+    "deploy": "vercel"
+  },
+  "keywords": [
+    "vercel",
+    "analytics"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.3.1"
+  }
+}
