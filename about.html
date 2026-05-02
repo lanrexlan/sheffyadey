@@ -8,19 +8,512 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+<style>
+  /* ── Philosophy list ── */
+  .phi-list {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    margin-top: 1.5rem;
+  }
+  .phi-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 1.15rem;
+    background: var(--surf);
+    border: 1px solid var(--bd);
+    border-radius: var(--r-sm);
+    transition: var(--t);
+  }
+  .phi-item:hover {
+    border-color: var(--cy-bd);
+    background: var(--surf-2);
+  }
+  .phi-num {
+    font-family: var(--f-mono);
+    font-size: .6rem;
+    color: var(--cy);
+    letter-spacing: .08em;
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    background: var(--cy-dim);
+    border: 1px solid var(--cy-bd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: .05rem;
+  }
+  .phi-text {
+    font-size: .875rem;
+    color: var(--tx-2);
+    line-height: 1.6;
+  }
+  .phi-text strong {
+    font-family: var(--f-dis);
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--tx);
+    display: block;
+    margin-bottom: .18rem;
+  }
+
+  /* ── Values strip ── */
+  .values-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem;
+    margin-top: 1.75rem;
+  }
+  .value-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .38rem .9rem .38rem .6rem;
+    background: var(--surf);
+    border: 1px solid var(--bd);
+    border-radius: var(--r-pill);
+    font-family: var(--f-mono);
+    font-size: .63rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--tx-2);
+    transition: var(--t);
+  }
+  .value-pill:hover {
+    border-color: var(--cy-bd);
+    color: var(--cy);
+    background: var(--cy-dim);
+  }
+  .value-pill-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--cy);
+    flex-shrink: 0;
+  }
+
+  /* ── Trust cards ── */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+  .trust-card {
+    background: var(--surf);
+    border: 1px solid var(--bd);
+    border-radius: var(--r);
+    padding: 1.5rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    transition: var(--t);
+  }
+  .trust-card:hover {
+    border-color: var(--cy-bd);
+    background: var(--surf-2);
+    transform: translateY(-3px);
+  }
+  .trust-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--cy-dim);
+    border: 1px solid var(--cy-bd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: .25rem;
+  }
+  .trust-card-title {
+    font-family: var(--f-dis);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    color: var(--tx);
+    line-height: 1.2;
+  }
+  .trust-card-desc {
+    font-size: .84rem;
+    color: var(--tx-2);
+    line-height: 1.65;
+  }
+
+  /* ── Mission panel ── */
+  .mission-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .mission-panel {
+    background: var(--surf);
+    border: 1px solid var(--cy-bd);
+    border-radius: var(--r);
+    padding: 1.75rem;
+  }
+  .mission-panel-label {
+    font-family: var(--f-mono);
+    font-size: .62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--cy);
+    margin-bottom: .75rem;
+  }
+  .mission-panel-text {
+    font-size: .95rem;
+    color: var(--tx);
+    line-height: 1.75;
+  }
+  .mission-panel-text em {
+    font-style: italic;
+    color: var(--cy);
+  }
+
+  @media (max-width: 900px) {
+    .trust-grid { grid-template-columns: 1fr 1fr; }
+    .mission-split { grid-template-columns: 1fr; gap: 1.75rem; }
+  }
+  @media (max-width: 600px) {
+    .trust-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-<nav id="navbar"><div class="wrap nav-inner"><a href="index.html" class="nav-logo"><svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark"><rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/><rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/><circle cx="15" cy="15" r="3.5" fill="#00d4f2"/><circle cx="15" cy="15" r="6.5" stroke="rgba(0,212,242,0.18)" stroke-width="1"/><line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/><line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/><line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/><line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/></svg><span class="nav-brand">Sheffy Adey</span></a><div class="nav-links" id="primary-nav"><a href="services.html">Services</a><a href="work.html">Work</a><a href="process.html">Method</a><a href="about.html">Why Us</a><a href="team.html">Team</a><a href="faq.html">Knowledge Hub</a></div><a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a><button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primary-nav" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button></div></nav>
 
-<section class="page-hero"><div class="hero-grid"></div><div class="noise"></div><div class="wrap page-intro"><div><div class="hero-tag"><div class="hero-tag-dot"></div>About Sheffy Adey</div><h1 class="t-display page-title">Engineering teams for products that have to work in the field.</h1><p class="page-sub">Sheffy Adey is an AI + IoT product lab focused on one outcome: systems that leave prototype mode and survive deployment. We combine embedded engineering, machine learning, cloud architecture, and governance into one execution unit.</p></div><div class="page-stat-panel"><div class="page-stat"><span class="page-stat-key">Typical sprint</span><span class="page-stat-val">4–6 Weeks</span></div><div class="page-stat"><span class="page-stat-key">Delivery model</span><span class="page-stat-val">One integrated team</span></div><div class="page-stat"><span class="page-stat-key">Core promise</span><span class="page-stat-val">Capability transfer</span></div></div></div></section>
+<!-- ══════════════ NAV ══════════════ -->
+<nav id="navbar">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark">
+        <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
+        <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
+        <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
+        <circle cx="15" cy="15" r="6.5" stroke="rgba(0,212,242,0.18)" stroke-width="1"/>
+        <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+      </svg>
+      <span class="nav-brand">Sheffy Adey</span>
+    </a>
+    <div class="nav-links" id="primary-nav">
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="process.html">Method</a>
+      <a href="about.html">Why Us</a>
+      <a href="faq.html">Knowledge Hub</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
+    <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primary-nav" aria-expanded="false" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-<section class="section"><div class="wrap"><div class="section-head reveal"><div class="eyebrow"><span class="eyebrow-dot"></span>Company Overview</div><h2 class="t-heading sec-hl">Built for operators, not slide decks.</h2><p class="sec-sub">Most teams can prove an idea in controlled conditions. Fewer can engineer for unstable networks, power limits, hardware constraints, and compliance obligations. That gap is where we operate.</p></div><div class="content-grid"><article class="info-card reveal d1"><h3>Mission and approach</h3><p>We help teams ship intelligent connected products with a repeatable method. Our ADEPT loop keeps strategy close to implementation, so decisions are tested quickly and translated into firmware, models, and production runbooks without drift.</p></article><article class="info-card reveal d2"><h3>What makes us different</h3><p>We do not split critical work across disconnected vendors. Device architecture, edge intelligence, telemetry pipelines, and governance are designed together so risk and performance are visible from day one.</p></article></div></div></section>
+<!-- ══════════════ PAGE HERO ══════════════ -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="noise"></div>
+  <div class="wrap page-intro">
+    <div>
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>About Sheffy Adey
+      </div>
+      <h1 class="t-display page-title">Built for products that must survive the field.</h1>
+      <p class="page-sub">Sheffy Adey is an engineering-led AI&nbsp;+&nbsp;IoT lab focused on one outcome: connected systems that leave prototype mode and keep working under real-world constraints. We do not optimise for demos. We engineer for deployment.</p>
+    </div>
+    <div class="page-stat-panel">
+      <div class="page-stat">
+        <span class="page-stat-key">Delivery model</span>
+        <span class="page-stat-val">One integrated team</span>
+      </div>
+      <div class="page-stat">
+        <span class="page-stat-key">Typical sprint</span>
+        <span class="page-stat-val">4–6 weeks</span>
+      </div>
+      <div class="page-stat">
+        <span class="page-stat-key">Handover</span>
+        <span class="page-stat-val">Fully documented</span>
+      </div>
+      <div class="page-stat">
+        <span class="page-stat-key">Client goal</span>
+        <span class="page-stat-val">Operate independently</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="section" style="background:var(--bg-lift)"><div class="wrap"><div class="section-head reveal"><div class="eyebrow"><span class="eyebrow-dot"></span>Why AI + IoT together</div><h2 class="t-heading sec-hl">Intelligence matters most at the edge.</h2><p class="sec-sub">When AI is detached from physical systems, it cannot respond in time to real-world context. We co-design model behavior with sensor fidelity, power budgets, and operational workflows.</p></div><div class="content-grid"><article class="info-card reveal d1"><h3>Physical context</h3><p>We build models against device realities: sensor noise, bandwidth drops, local memory limits, and duty cycles. That produces reliable inference instead of lab-only accuracy.</p></article><article class="info-card reveal d2"><h3>Trust principles</h3><ul class="list-clean"><li>Security baseline integrated from architecture stage.</li><li>Transparent metrics on uptime, drift, and inference quality.</li><li>Responsible AI controls aligned to the deployment risk profile.</li><li>Clear handover artefacts so client teams can operate independently.</li></ul></article></div></div></section>
+<!-- ══════════════ MISSION + DIFFERENTIATOR ══════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Company overview</div>
+      <h2 class="t-heading sec-hl">One mission. One execution model.</h2>
+    </div>
 
-<section id="cta"><div class="cta-radial"></div><div class="cta-grid"></div><div class="cta-inner wrap reveal"><div class="cta-tag"><div style="width:5px;height:5px;border-radius:50%;background:var(--cy);animation:blink 2s infinite"></div>Ready when you are</div><h2 class="t-display cta-hl">Need a partner that can actually ship?</h2><p class="cta-sub">Bring your challenge, constraints, and deployment context. We will map the right sprint and delivery path.</p><div class="cta-actions"><a href="contact.html" class="btn btn-white">Book a Discovery Call <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div></div></section>
+    <div class="mission-split reveal">
+      <div>
+        <div class="mission-panel" style="margin-bottom:1.2rem">
+          <div class="mission-panel-label">↳ Mission</div>
+          <p class="mission-panel-text">To help organisations move from concept to dependable deployment by combining hardware, embedded systems, data, intelligence, and governance in <em>one execution model</em> — not a chain of disconnected specialists.</p>
+        </div>
+        <div class="mission-panel">
+          <div class="mission-panel-label">↳ What makes us different</div>
+          <p class="mission-panel-text">We design for unstable connectivity, power limitations, environmental conditions, maintainability, and risk control from the start. That makes our systems more deployment-ready and easier for client teams to inherit — without rework at the handover stage.</p>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:var(--f-mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tx-2);margin-bottom:1rem">Engineering philosophy</div>
+        <p style="font-size:.95rem;color:var(--tx);line-height:1.78;margin-bottom:1.5rem">A useful intelligent system is not only accurate. It is observable, explainable enough for its operational context, secure by design, and operable by the team that owns it after handover.</p>
+        <p style="font-size:.875rem;color:var(--tx-2);line-height:1.72;margin-bottom:1.5rem">Accuracy metrics measured in controlled conditions are necessary — but they are not sufficient evidence that a system will hold up under the conditions it will actually face: intermittent connectivity, hardware variance, data drift, and operators who were not involved in the build.</p>
+        <p style="font-size:.875rem;color:var(--tx-2);line-height:1.72">We design for those conditions from the architecture stage. That means the gap between pilot and production is smaller — and the documentation exists to close it.</p>
 
-<footer><div class="wrap"><div class="footer-top"><div><div class="footer-brand-wrap"><svg width="22" height="22" viewBox="0 0 30 30" fill="none"><rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/><rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/><circle cx="15" cy="15" r="3.5" fill="#00d4f2"/><line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/><line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/><line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/><line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/></svg><span class="footer-brand">Sheffy Adey</span></div><p class="footer-desc">A product-development lab building AI-enabled IoT systems that are secure, interoperable, and measurable — from concept to deployed fleet.</p></div><div><div class="footer-col-title">Services</div><div class="footer-links"><a href="services.html">AI Systems</a><a href="services.html">IoT Product Development</a><a href="services.html">Embedded Intelligence</a><a href="services.html">End-to-End Engineering</a></div></div><div><div class="footer-col-title">Programmes</div><div class="footer-links"><a href="process.html">Bootcamps</a><a href="process.html">Sprints</a><a href="process.html">Partnerships</a><a href="process.html">Toolkits</a></div></div><div><div class="footer-col-title">Company</div><div class="footer-links"><a href="about.html">About</a><a href="work.html">Case Studies</a><a href="faq.html">Knowledge Hub</a><a href="process.html">Trust &amp; Governance</a><a href="contact.html">Contact</a></div></div></div><div class="footer-rule"></div><div class="footer-bottom"><div class="footer-copy">© 2025 Sheffy Adey. All rights reserved.</div><div class="footer-legal"><a href="#">Privacy &amp; Cookies</a><a href="#">Accessibility</a><a href="#">Terms</a></div><div class="footer-tag">Built with <span>♥</span> Prototype fast. Validate hard. Scale responsibly.</div></div></div></footer>
+        <div style="font-family:var(--f-mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tx-2);margin-top:1.85rem;margin-bottom:.9rem">Values</div>
+        <div class="values-strip">
+          <span class="value-pill"><span class="value-pill-dot"></span>Security by design</span>
+          <span class="value-pill"><span class="value-pill-dot"></span>Responsible intelligence</span>
+          <span class="value-pill"><span class="value-pill-dot"></span>Documentation as a deliverable</span>
+          <span class="value-pill"><span class="value-pill-dot"></span>Measurable outcomes</span>
+          <span class="value-pill"><span class="value-pill-dot"></span>Capability transfer over vendor dependency</span>
+          <span class="value-pill"><span class="value-pill-dot"></span>Field-first engineering</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ HOW WE WORK ══════════════ -->
+<section class="section" style="background:var(--bg-lift)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>How we work</div>
+      <h2 class="t-heading sec-hl">The gap between prototype and production is where we operate.</h2>
+      <p class="sec-sub">Most teams can demonstrate something working in controlled conditions. Reliably shipping a system that holds up under hardware variation, data drift, and real operational load is a different problem. That is the one we are set up to solve.</p>
+    </div>
+
+    <div class="phi-list">
+      <div class="phi-item reveal d1">
+        <div class="phi-num">01</div>
+        <div class="phi-text">
+          <strong>Constraints are architecture inputs, not afterthoughts</strong>
+          Power budgets, connectivity assumptions, environmental conditions, and operator skill levels are captured at the architecture stage — not handled as edge cases after build. That is how production-grade reliability is designed in rather than patched on.
+        </div>
+      </div>
+      <div class="phi-item reveal d2">
+        <div class="phi-num">02</div>
+        <div class="phi-text">
+          <strong>Device, data, and intelligence are co-designed</strong>
+          When hardware, edge inference, and cloud pipelines are designed by separate teams with separate goals, system behavior at the boundary is unpredictable. We keep these decisions in the same room so trade-offs are explicit and resolved before they become production failures.
+        </div>
+      </div>
+      <div class="phi-item reveal d3">
+        <div class="phi-num">03</div>
+        <div class="phi-text">
+          <strong>Governance is not a stage gate — it is part of engineering</strong>
+          Security controls, access policies, risk registers, and maintenance plans are produced during the build — not appended at handover. This keeps them accurate, and it means they are ready for procurement review, grant reporting, or internal governance sign-off.
+        </div>
+      </div>
+      <div class="phi-item reveal d4">
+        <div class="phi-num">04</div>
+        <div class="phi-text">
+          <strong>The engagement ends when the client team can operate independently</strong>
+          We measure success by whether the team that inherits the system can run it, audit it, and extend it without us. That shapes how we write documentation, design monitoring, and structure training — not as a formality, but as a functional test of the handover.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TRUST SECTION ══════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>For grant and procurement review</div>
+      <h2 class="t-heading sec-hl">What serious partners need to know.</h2>
+      <p class="sec-sub">Organisations evaluating us for funded programmes, procurement frameworks, or technology partnerships need more than a capabilities overview. Here is what our engagements actually produce.</p>
+    </div>
+
+    <div class="trust-grid">
+
+      <div class="trust-card reveal d1">
+        <div class="trust-card-icon">📄</div>
+        <div class="trust-card-title">We document decisions</div>
+        <p class="trust-card-desc">Architecture choices, component trade-offs, risk assumptions, and configuration decisions are written into deliverable documents — not held in the heads of the people who built the system. Outputs are structured to support audit, review, and continuity.</p>
+      </div>
+
+      <div class="trust-card reveal d2">
+        <div class="trust-card-icon">⚙️</div>
+        <div class="trust-card-title">We design around constraints</div>
+        <p class="trust-card-desc">Power budgets, connectivity drop-out, sensor degradation, and limited operator bandwidth are treated as requirements — not exceptions. Systems are stress-tested against realistic operating conditions before they are considered pilot-ready.</p>
+      </div>
+
+      <div class="trust-card reveal d3">
+        <div class="trust-card-icon">🤝</div>
+        <div class="trust-card-title">We build for handover</div>
+        <p class="trust-card-desc">Every engagement produces a handover pack: runbook, maintenance guide, security checklist, and training session. The test of a successful engagement is whether the client team can operate the system without us — and we design every deliverable toward that outcome.</p>
+      </div>
+
+      <div class="trust-card reveal d1">
+        <div class="trust-card-icon">📊</div>
+        <div class="trust-card-title">We measure system behavior</div>
+        <p class="trust-card-desc">Monitoring dashboards, drift alerts, and performance reports are scoped into the work — not treated as optional add-ons. Clients receive defined metrics aligned to operational targets, not lab benchmarks that do not translate to the field.</p>
+      </div>
+
+      <div class="trust-card reveal d2">
+        <div class="trust-card-icon">🔐</div>
+        <div class="trust-card-title">We treat governance as part of engineering</div>
+        <p class="trust-card-desc">Security controls, access policies, data handling procedures, and risk registers are produced during build — not after. Deliverables reference NISTIR 8259, ETSI EN 303 645, and NIST AI RMF where applicable, and are structured for regulatory or funder review.</p>
+      </div>
+
+      <div class="trust-card reveal d3">
+        <div class="trust-card-icon">🎯</div>
+        <div class="trust-card-title">We scope before we start</div>
+        <p class="trust-card-desc">Every engagement begins with a written scope, a defined deliverable set, and agreed acceptance criteria. No open-ended retainers. No ambiguous milestones. Scope is confirmed before any build work begins, which gives procurement and programme teams a clear basis for approval.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STANDARDS ══════════════ -->
+<section class="section" style="background:var(--bg-lift)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Standards and references</div>
+      <h2 class="t-heading sec-hl">Aligned to frameworks that matter to funders and procurement.</h2>
+      <p class="sec-sub">Our work references established technical and governance standards. Deliverables are structured so they can be mapped to grant milestones, TRL assessments, or procurement due-diligence checklists.</p>
+    </div>
+
+    <div class="content-grid reveal">
+      <article class="info-card">
+        <h3>IoT security baseline</h3>
+        <p>Device work references NISTIR 8259 for IoT device cybersecurity capability baseline requirements and ETSI EN 303 645 for consumer IoT security. Security controls are documented with the rationale for inclusion or explicit exclusion.</p>
+        <div class="stack-list">
+          <span class="stack-chip">NISTIR 8259</span>
+          <span class="stack-chip">ETSI EN 303 645</span>
+          <span class="stack-chip">IEC 62443</span>
+        </div>
+      </article>
+      <article class="info-card">
+        <h3>AI risk management</h3>
+        <p>Intelligence system design references the NIST AI Risk Management Framework. Model decisions, confidence thresholds, fallback logic, and monitoring plans are documented in a format accessible to non-technical governance reviewers.</p>
+        <div class="stack-list">
+          <span class="stack-chip">NIST AI RMF</span>
+          <span class="stack-chip">Model cards</span>
+          <span class="stack-chip">Drift audit logs</span>
+        </div>
+      </article>
+      <article class="info-card">
+        <h3>Grant and programme readiness</h3>
+        <p>Architecture briefs, risk registers, and handover packs are structured to support Innovate UK, UKRI, and equivalent programme milestone reporting — including Technology Readiness Level documentation and project deliverable records.</p>
+        <div class="stack-list">
+          <span class="stack-chip">TRL documentation</span>
+          <span class="stack-chip">Milestone reports</span>
+          <span class="stack-chip">Risk registers</span>
+        </div>
+      </article>
+      <article class="info-card">
+        <h3>Data handling and privacy</h3>
+        <p>Data pipeline design includes a classification step, retention policy, and processing record. For systems handling personal or operationally sensitive data, we apply privacy-by-design principles with documented controls aligned to ISO 27001.</p>
+        <div class="stack-list">
+          <span class="stack-chip">ISO 27001 aligned</span>
+          <span class="stack-chip">GDPR-aware design</span>
+          <span class="stack-chip">Processing records</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA ══════════════ -->
+<section id="cta">
+  <div class="cta-radial"></div>
+  <div class="cta-grid"></div>
+  <div class="cta-inner wrap reveal">
+    <div class="cta-tag">
+      <div style="width:5px;height:5px;border-radius:50%;background:var(--cy);animation:blink 2s infinite"></div>
+      Ready when you are
+    </div>
+    <h2 class="t-display cta-hl">Need a partner that can ship, not just advise?</h2>
+    <p class="cta-sub">Let's review your constraints, operating environment, and target outcome — then define the right sprint, deliverable set, and acceptance criteria before any build work begins.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-white">Start a Project
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="services.html" class="btn btn-ghost-light">See Our Services</a>
+    </div>
+    <p class="cta-note">First call is 45 minutes. We will confirm fit before any scope is proposed.</p>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-wrap">
+          <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+            <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
+            <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
+            <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
+            <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+          </svg>
+          <span class="footer-brand">Sheffy Adey</span>
+        </div>
+        <p class="footer-desc">A product-development lab building AI-enabled IoT systems that are secure, interoperable, and measurable — from concept to deployed fleet.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-links">
+          <a href="services.html">Device and Embedded Systems</a>
+          <a href="services.html">Data and Intelligence</a>
+          <a href="services.html">Cloud and Integration</a>
+          <a href="services.html">Governance and Transfer</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Programmes</div>
+        <div class="footer-links">
+          <a href="process.html">Discovery Sprint</a>
+          <a href="process.html">Pilot Build Sprint</a>
+          <a href="process.html">System Recovery</a>
+          <a href="process.html">Capability Transfer</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="work.html">Case Studies</a>
+          <a href="faq.html">Knowledge Hub</a>
+          <a href="process.html">Trust &amp; Governance</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Sheffy Adey. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy &amp; Cookies</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="footer-tag">Built with <span>♥</span> Prototype fast. Validate hard. Scale responsibly.</div>
+    </div>
+  </div>
+</footer>
+
 <script src="main.js"></script>
 </body>
 </html>
