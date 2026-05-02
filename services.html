@@ -8,12 +8,301 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+<style>
+  /* ── Service group cards ── */
+  .svc-group {
+    background: var(--surf);
+    border: 1px solid var(--bd);
+    border-radius: var(--r);
+    overflow: hidden;
+    transition: var(--t);
+  }
+  .svc-group:hover {
+    border-color: var(--cy-bd);
+    box-shadow: var(--sh-md);
+  }
+  .svc-group-hdr {
+    padding: 1.65rem 1.75rem 1.25rem;
+    border-bottom: 1px solid var(--bd);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+  }
+  .svc-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 11px;
+    background: var(--cy-dim);
+    border: 1px solid var(--cy-bd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+  .svc-hdr-text {}
+  .svc-num {
+    font-family: var(--f-mono);
+    font-size: .6rem;
+    color: var(--cy);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: .25rem;
+    display: block;
+  }
+  .svc-title {
+    font-family: var(--f-dis);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--tx);
+    margin-bottom: .45rem;
+    line-height: 1.1;
+  }
+  .svc-lead {
+    font-size: .875rem;
+    color: var(--tx-2);
+    line-height: 1.7;
+  }
+  .svc-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .svc-scope {
+    padding: 1.4rem 1.75rem;
+    border-right: 1px solid var(--bd);
+  }
+  .svc-scope-title {
+    font-family: var(--f-mono);
+    font-size: .63rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--tx-2);
+    margin-bottom: .85rem;
+  }
+  .svc-scope ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .52rem;
+  }
+  .svc-scope ul li {
+    font-size: .84rem;
+    color: var(--tx-2);
+    line-height: 1.55;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .svc-scope ul li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--tx-3);
+    position: absolute;
+    left: 0;
+    top: .53rem;
+  }
+  .svc-deliverables {
+    padding: 1.4rem 1.75rem;
+    background: rgba(0,212,242,.025);
+  }
+  .svc-del-title {
+    font-family: var(--f-mono);
+    font-size: .63rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--cy);
+    margin-bottom: .85rem;
+  }
+  .svc-del-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .svc-del-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    font-size: .82rem;
+    color: var(--tx-2);
+    line-height: 1.45;
+  }
+  .svc-del-arrow {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background: var(--cy-dim);
+    border: 1px solid var(--cy-bd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: .05rem;
+  }
+  .svc-del-arrow svg {
+    width: 8px;
+    height: 8px;
+    stroke: var(--cy);
+    stroke-width: 2;
+    fill: none;
+  }
+
+  /* ── Engagement model cards ── */
+  .engage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  .engage-card {
+    background: var(--surf);
+    border: 1px solid var(--bd);
+    border-radius: var(--r);
+    padding: 1.6rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    transition: var(--t);
+  }
+  .engage-card:hover {
+    border-color: var(--cy-bd);
+    background: var(--surf-2);
+    transform: translateY(-3px);
+  }
+  .engage-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-family: var(--f-mono);
+    font-size: .6rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--cy);
+    background: var(--cy-dim);
+    border: 1px solid var(--cy-bd);
+    padding: .2rem .55rem;
+    border-radius: var(--r-pill);
+    width: fit-content;
+    margin-bottom: .2rem;
+  }
+  .engage-title {
+    font-family: var(--f-dis);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--tx);
+    line-height: 1.15;
+  }
+  .engage-desc {
+    font-size: .875rem;
+    color: var(--tx-2);
+    line-height: 1.68;
+    flex: 1;
+  }
+  .engage-best {
+    font-family: var(--f-mono);
+    font-size: .63rem;
+    color: var(--tx-3);
+    letter-spacing: .05em;
+    border-top: 1px solid var(--bd);
+    padding-top: .75rem;
+    margin-top: .2rem;
+  }
+  .engage-best strong {
+    color: var(--tx-2);
+  }
+
+  /* ── Stack strip ── */
+  .stack-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: 1.1rem 1.75rem;
+    border-top: 1px solid var(--bd);
+    background: var(--bg);
+  }
+  .stack-strip-label {
+    font-family: var(--f-mono);
+    font-size: .6rem;
+    color: var(--tx-3);
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    margin-right: .3rem;
+  }
+
+  /* ── Proof row ── */
+  .proof-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--bd);
+    border: 1px solid var(--bd);
+    border-radius: var(--r);
+    overflow: hidden;
+  }
+  .proof-cell {
+    background: var(--surf);
+    padding: 1.5rem 1.35rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .35rem;
+  }
+  .proof-val {
+    font-family: var(--f-dis);
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--cy);
+    line-height: 1;
+    display: block;
+  }
+  .proof-label {
+    font-family: var(--f-mono);
+    font-size: .62rem;
+    color: var(--tx-2);
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    line-height: 1.45;
+    max-width: 12ch;
+    text-align: center;
+  }
+
+  /* ── CTA panel ── */
+  .cta-split {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    text-align: left;
+  }
+  .cta-split .cta-actions {
+    justify-content: flex-start;
+  }
+
+  /* Responsive overrides */
+  @media (max-width: 900px) {
+    .svc-body { grid-template-columns: 1fr; }
+    .svc-scope { border-right: none; border-bottom: 1px solid var(--bd); }
+    .engage-grid { grid-template-columns: 1fr; }
+    .proof-row { grid-template-columns: repeat(2, 1fr); }
+    .cta-split { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  @media (max-width: 600px) {
+    .proof-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
 </head>
 <body>
 
 <!-- ══════════════ NAV ══════════════ -->
 <nav id="navbar">
-<<<<<<< HEAD
   <div class="wrap nav-inner">
     <a href="index.html" class="nav-logo">
       <svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark">
@@ -40,39 +329,6 @@
       <span></span><span></span><span></span>
     </button>
   </div>
-=======
-<div class="wrap nav-inner">
-<a href="index.html" class="nav-logo">
-<svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark">
-<rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
-<rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
-<circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
-<circle cx="15" cy="15" r="6.5" stroke="rgba(0,212,242,0.18)" stroke-width="1"/>
-<line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-</svg>
-<span class="nav-brand">Sheffy Adey</span>
-</a>
-<div class="nav-links" id="primary-nav">
-<a href="services.html">Services</a>
-<a href="work.html">Work</a>
-<a href="process.html">Method</a>
-<a href="about.html">Why Us</a>
-<a href="faq.html">Knowledge Hub</a>
-</div>
-<a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
-<button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primary-nav" aria-expanded="false" onclick="toggleMenu()">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
-</button>
-</div>
->>>>>>> d756111c17e153fab1f1c617d635efb1deba13da
 </nav>
 
 <!-- ══════════════ PAGE HERO ══════════════ -->
