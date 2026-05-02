@@ -28,12 +28,30 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-if (document.querySelector('.hero-orb')) {
-  document.addEventListener('mousemove', (e) => {
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const heroOrbs = document.querySelectorAll('.hero-orb');
+
+if (heroOrbs.length) {
+  const handleOrbMousemove = (e) => {
     const x = (e.clientX / innerWidth - 0.5) * 16;
     const y = (e.clientY / innerHeight - 0.5) * 16;
-    document.querySelectorAll('.hero-orb').forEach((orb, i) => {
+    heroOrbs.forEach((orb, i) => {
       orb.style.transform = `translate(${x * (i ? -0.65 : 1)}px,${y * (i ? -0.65 : 1)}px)`;
     });
-  });
+  };
+
+  const toggleOrbMotion = () => {
+    if (reducedMotionQuery.matches) {
+      document.removeEventListener('mousemove', handleOrbMousemove);
+      heroOrbs.forEach((orb) => {
+        orb.style.transform = '';
+      });
+      return;
+    }
+
+    document.addEventListener('mousemove', handleOrbMousemove);
+  };
+
+  toggleOrbMotion();
+  reducedMotionQuery.addEventListener('change', toggleOrbMotion);
 }
