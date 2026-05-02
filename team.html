@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Team — Sheffy Adey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+/* ════════════════════════════════════════════
+   TEAM PAGE — ADDITIONAL STYLES
+════════════════════════════════════════════ */
+
+/* ── Team grid layout ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* Founder card — full width, horizontal magazine layout */
+.tm-founder {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0;
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: var(--t);
+  position: relative;
+}
+.tm-founder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,212,242,.05), transparent 55%);
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+.tm-founder:hover { border-color: var(--cy-bd); background: var(--surf-2) }
+.tm-founder:hover::before { opacity: 1 }
+
+.tm-avatar-col {
+  width: 260px;
+  flex-shrink: 0;
+  position: relative;
+  background: linear-gradient(160deg, var(--surf-3) 0%, var(--bg-lift) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2.5rem 1.5rem 2rem;
+  border-right: 1px solid var(--bd);
+  min-height: 340px;
+}
+
+/* Avatar placeholder — geometric network motif */
+.avatar-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1.5rem;
+}
+.avatar-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--surf-3);
+  border: 2px solid var(--cy-bd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.avatar-initials {
+  font-family: var(--f-dis);
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--cy);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.avatar-pulse {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid var(--cy-bd);
+  animation: pulseRing 3s ease-out infinite;
+}
+.avatar-pulse-2 {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,212,242,.08);
+  animation: pulseRing 3s ease-out infinite;
+  animation-delay: .8s;
+}
+@keyframes pulseRing {
+  0%   { opacity: .7; transform: scale(1) }
+  70%  { opacity: 0; transform: scale(1.08) }
+  100% { opacity: 0 }
+}
+
+/* Status badge */
+.avatar-status {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cy);
+  border: 2px solid var(--surf-3);
+  z-index: 2;
+  animation: blink 2.5s infinite;
+}
+
+.tm-role-tag {
+  font-family: var(--f-mono);
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cy);
+  background: var(--cy-dim);
+  border: 1px solid var(--cy-bd);
+  padding: .2rem .65rem;
+  border-radius: var(--r-pill);
+  text-align: center;
+}
+
+.tm-body {
+  padding: 2.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tm-name {
+  font-family: var(--f-dis);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--tx);
+  line-height: 1;
+  margin-bottom: .35rem;
+}
+.tm-title {
+  font-family: var(--f-mono);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cy);
+  margin-bottom: 1.1rem;
+}
+
+.tm-divider {
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cy), var(--teal-dk));
+  border-radius: 2px;
+  margin-bottom: 1.1rem;
+}
+
+.tm-bio {
+  font-size: .9rem;
+  color: var(--tx-2);
+  line-height: 1.72;
+  max-width: 78ch;
+  flex: 1;
+}
+
+/* Expertise chips below bio */
+.tm-skills {
+  display: flex;
+  gap: .45rem;
+  flex-wrap: wrap;
+  margin-top: 1.35rem;
+}
+.tm-skill {
+  font-family: var(--f-mono);
+  font-size: .62rem;
+  color: var(--tx-2);
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--bd);
+  padding: .2rem .58rem;
+  border-radius: 5px;
+  letter-spacing: .03em;
+  transition: var(--t);
+}
+.tm-skill:hover {
+  border-color: var(--cy-bd);
+  color: var(--cy);
+  background: var(--cy-dim);
+}
+
+/* Stat strip at the bottom of founder card */
+.tm-founder-stats {
+  margin-top: 1.65rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--bd);
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.tfs-item {}
+.tfs-val {
+  font-family: var(--f-dis);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--cy);
+  line-height: 1;
+  display: block;
+}
+.tfs-key {
+  font-family: var(--f-mono);
+  font-size: .6rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--tx-3);
+  display: block;
+  margin-top: .18rem;
+}
+
+/* ── Regular team member cards ── */
+.tm-card {
+  grid-column: span 4;
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: var(--t);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.tm-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,212,242,.04), transparent 55%);
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+.tm-card:hover { transform: translateY(-5px); border-color: var(--cy-bd); background: var(--surf-2) }
+.tm-card:hover::before { opacity: 1 }
+
+.tm-card-top {
+  padding: 1.75rem 1.75rem 1.25rem;
+  background: linear-gradient(160deg, var(--surf-3) 0%, var(--surf) 100%);
+  border-bottom: 1px solid var(--bd);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+
+/* Smaller avatar for member cards */
+.tm-avatar-sm {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  background: var(--bg);
+  border: 1px solid var(--cy-bd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.tm-avatar-sm .avatar-initials {
+  font-size: 1.25rem;
+}
+.tm-avatar-sm .avatar-status {
+  width: 10px;
+  height: 10px;
+  bottom: 2px;
+  right: 2px;
+}
+
+.tm-card-header { flex: 1; min-width: 0 }
+.tm-card-name {
+  font-family: var(--f-dis);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--tx);
+  line-height: 1.05;
+  margin-bottom: .28rem;
+}
+.tm-card-title {
+  font-family: var(--f-mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cy);
+}
+
+.tm-card-body {
+  padding: 1.25rem 1.75rem 1.6rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.tm-card-bio {
+  font-size: .845rem;
+  color: var(--tx-2);
+  line-height: 1.7;
+  flex: 1;
+}
+.tm-card-skills {
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+  margin-top: 1.1rem;
+}
+
+/* Ghost initial behind card */
+.tm-ghost {
+  position: absolute;
+  right: .6rem;
+  bottom: -1rem;
+  font-family: var(--f-dis);
+  font-weight: 800;
+  font-size: 5rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,.04);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ── Values section ── */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.value-card {
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: var(--r);
+  padding: 1.6rem;
+  transition: var(--t);
+  position: relative;
+  overflow: hidden;
+}
+.value-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cy-bd);
+  background: var(--surf-2);
+}
+.value-num {
+  font-family: var(--f-dis);
+  font-weight: 800;
+  font-size: 2.8rem;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0,212,242,.18);
+  line-height: 1;
+  margin-bottom: .65rem;
+  display: block;
+}
+.value-title {
+  font-family: var(--f-dis);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--tx);
+  margin-bottom: .45rem;
+}
+.value-desc {
+  font-size: .82rem;
+  color: var(--tx-2);
+  line-height: 1.65;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .tm-founder { grid-template-columns: 1fr }
+  .tm-avatar-col { width: 100%; min-height: auto; flex-direction: row; justify-content: flex-start; padding: 1.75rem; border-right: none; border-bottom: 1px solid var(--bd); gap: 1.25rem }
+  .avatar-ring { margin-bottom: 0 }
+  .tm-card { grid-column: span 6 }
+  .values-grid { grid-template-columns: repeat(2, 1fr) }
+}
+@media (max-width: 768px) {
+  .tm-card { grid-column: span 12 }
+  .tm-body { padding: 1.5rem }
+  .tm-founder-stats { gap: 1.5rem }
+  .values-grid { grid-template-columns: 1fr }
+  .tm-avatar-col { flex-direction: column; align-items: center; text-align: center }
+  .avatar-ring { margin-bottom: 1rem }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ═══════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark">
+        <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
+        <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
+        <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
+        <circle cx="15" cy="15" r="6.5" stroke="rgba(0,212,242,0.18)" stroke-width="1"/>
+        <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+      </svg>
+      <span class="nav-brand">Sheffy Adey</span>
+    </a>
+    <div class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="process.html">Method</a>
+      <a href="about.html">Why Us</a>
+      <a href="faq.html">Knowledge Hub</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ PAGE HERO ══════════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="noise"></div>
+  <div class="wrap page-intro">
+    <div>
+      <div class="hero-tag"><div class="hero-tag-dot"></div>The People</div>
+      <h1 class="t-display page-title">Engineers who ship. Not consultants who advise.</h1>
+      <p class="page-sub">A compact, cross-disciplinary team built around one outcome: intelligent connected systems that survive the real world — not just the lab bench.</p>
+    </div>
+    <div class="page-stat-panel">
+      <div class="page-stat">
+        <span class="page-stat-key">Core disciplines</span>
+        <span class="page-stat-val">Electrical · Data · Energy · HVAC</span>
+      </div>
+      <div class="page-stat">
+        <span class="page-stat-key">Combined experience</span>
+        <span class="page-stat-val">15+ years</span>
+      </div>
+      <div class="page-stat">
+        <span class="page-stat-key">Delivery model</span>
+        <span class="page-stat-val">One integrated team</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM GRID ══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="ghost-num" style="top:-4rem;right:-1rem">Team</div>
+  <div class="wrap" style="position:relative;z-index:1">
+
+    <div class="reveal" style="margin-bottom:3rem">
+      <div class="eyebrow"><span class="eyebrow-dot pulse"></span>Core Team</div>
+      <h2 class="t-heading sec-hl">Four people. One system.</h2>
+      <p class="sec-sub">Each member brings a distinct technical domain. Together they cover the full stack from hardware to intelligence, energy to data — without the handoff gaps that slow most projects down.</p>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- ══ FOUNDER — full-width horizontal card ══ -->
+      <div class="tm-founder reveal">
+        <div class="tm-avatar-col">
+          <div class="avatar-ring">
+            <div class="avatar-img">
+              <span class="avatar-initials">ASA</span>
+            </div>
+            <div class="avatar-pulse"></div>
+            <div class="avatar-pulse-2"></div>
+            <div class="avatar-status"></div>
+          </div>
+          <div class="tm-role-tag">Founder &amp; Team Lead</div>
+        </div>
+
+        <div class="tm-body">
+          <div class="tm-name">Ademola Sheriffdeen Adegoke</div>
+          <div class="tm-title">Founder, CEO &amp; Principal Engineer</div>
+          <div class="tm-divider"></div>
+          <p class="tm-bio">
+            Ademola is an accomplished Electrical and Electronics Engineer and entrepreneur with over a decade of technical and leadership experience. He founded Sheffy Adey World in 2022 — a lab that bridges traditional electrical infrastructure and modern smart technology through innovative IoT solutions.
+            <br/><br/>
+            His academic foundation spans a B.Eng in Electrical and Electronics Engineering from the Federal University of Technology, Akure (2014), and a Postgraduate Degree in Telecommunications from the University of Ibadan (2019). His research centres on the evolution of wireless communication, with specific expertise in WCDMA and interference cancellation in wireless channels.
+            <br/><br/>
+            Before founding Sheffy Adey World, Ademola spent five years (2017–2022) with the Coca-Cola Hellenic Group, honing industrial operations and engineering management inside a fast-paced, global environment. He leads every engagement with a product mindset: strategy grounded in implementation, and execution measured by real deployment outcomes — not slide decks.
+          </p>
+
+          <!-- Skills -->
+          <div class="tm-skills">
+            <span class="tm-skill">IoT Architecture</span>
+            <span class="tm-skill">Wireless Communications</span>
+            <span class="tm-skill">WCDMA</span>
+            <span class="tm-skill">Interference Cancellation</span>
+            <span class="tm-skill">Industrial Engineering</span>
+            <span class="tm-skill">Product Strategy</span>
+            <span class="tm-skill">Electrical Systems</span>
+            <span class="tm-skill">Engineering Management</span>
+          </div>
+
+          <!-- Stat strip -->
+          <div class="tm-founder-stats">
+            <div class="tfs-item">
+              <span class="tfs-val">10+</span>
+              <span class="tfs-key">Years experience</span>
+            </div>
+            <div class="tfs-item">
+              <span class="tfs-val">2022</span>
+              <span class="tfs-key">Founded Sheffy Adey World</span>
+            </div>
+            <div class="tfs-item">
+              <span class="tfs-val">5 yrs</span>
+              <span class="tfs-key">Coca-Cola Hellenic Group</span>
+            </div>
+            <div class="tfs-item">
+              <span class="tfs-val">FUTA · UI</span>
+              <span class="tfs-key">Academic institutions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ HABEEB — Data Intelligence Lead ══ -->
+      <div class="tm-card reveal d1">
+        <div class="tm-ghost">H</div>
+        <div class="tm-card-top">
+          <div class="tm-avatar-sm">
+            <span class="avatar-initials">HOA</span>
+            <div class="avatar-status"></div>
+          </div>
+          <div class="tm-card-header">
+            <div class="tm-card-name">Habeeb Alabere</div>
+            <div class="tm-card-title">Data Intelligence Lead</div>
+          </div>
+        </div>
+        <div class="tm-card-body">
+          <p class="tm-card-bio" style="position:relative;z-index:1">
+            Habeeb Olakunle Alabere is a Statistics graduate and the team's data intelligence anchor. He brings rigorous analytical thinking to every project — translating raw sensor streams, survey outputs, and operational logs into decision-quality insights that drive system design and performance reviews.
+            <br/><br/>
+            With hands-on experience in survey research, field data collection, and analytical modelling, Habeeb ensures that every pilot fleet produces not just uptime numbers, but meaningful intelligence that clients can act on. He is passionate about closing the gap between raw data and real decisions.
+          </p>
+          <div class="tm-card-skills" style="position:relative;z-index:1">
+            <span class="tm-skill">Excel</span>
+            <span class="tm-skill">Power BI</span>
+            <span class="tm-skill">SPSS</span>
+            <span class="tm-skill">R</span>
+            <span class="tm-skill">Survey Research</span>
+            <span class="tm-skill">Data Visualisation</span>
+            <span class="tm-skill">Field Data Collection</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ABIOLA — Solar & Energy Systems Engineer ══ -->
+      <div class="tm-card reveal d2">
+        <div class="tm-ghost">A</div>
+        <div class="tm-card-top">
+          <div class="tm-avatar-sm">
+            <span class="avatar-initials">ALO</span>
+            <div class="avatar-status"></div>
+          </div>
+          <div class="tm-card-header">
+            <div class="tm-card-name">Abiola Opeyemi</div>
+            <div class="tm-card-title">Solar &amp; Energy Systems Engineer</div>
+          </div>
+        </div>
+        <div class="tm-card-body">
+          <p class="tm-card-bio" style="position:relative;z-index:1">
+            Abiola Lukman Opeyemi is the team's energy systems specialist, combining a foundation in Electrical and Electronic Engineering from Polytechnic Ede with deep, hands-on expertise in photovoltaic solar systems.
+            <br/><br/>
+            His work ensures that Sheffy Adey's IoT deployments are energy-resilient from day one — particularly in off-grid and constrained-power environments where device longevity depends on well-engineered power architecture. Abiola brings a practical, field-tested perspective to power budgeting, panel selection, battery management, and solar integration across device fleets.
+          </p>
+          <div class="tm-card-skills" style="position:relative;z-index:1">
+            <span class="tm-skill">PV Solar Systems</span>
+            <span class="tm-skill">Off-grid Power Design</span>
+            <span class="tm-skill">Battery Management</span>
+            <span class="tm-skill">Power Budgeting</span>
+            <span class="tm-skill">Electrical Engineering</span>
+            <span class="tm-skill">Energy Resilience</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ IBRAHIM — HVAC & Building Systems Engineer ══ -->
+      <div class="tm-card reveal d3">
+        <div class="tm-ghost">I</div>
+        <div class="tm-card-top">
+          <div class="tm-avatar-sm">
+            <span class="avatar-initials">IAH</span>
+            <div class="avatar-status"></div>
+          </div>
+          <div class="tm-card-header">
+            <div class="tm-card-name">Ibrahim AbdulHakeem</div>
+            <div class="tm-card-title">HVAC &amp; Building Systems Engineer</div>
+          </div>
+        </div>
+        <div class="tm-card-body">
+          <p class="tm-card-bio" style="position:relative;z-index:1">
+            Ibrahim AbdulHakeem is a NEBOSH-certified HVAC Engineer with four years of professional experience, currently operating with ACUSPARE Projects &amp; Engineering Services Limited. A graduate of the Federal University of Technology, Akure (FUTA), he applies rigorous mechanical and environmental engineering discipline to real-world building systems.
+            <br/><br/>
+            Within Sheffy Adey's product capability, Ibrahim bridges the gap between physical building environments and intelligent monitoring systems — ensuring that connected sensor deployments in HVAC-critical infrastructure are designed for the environmental realities of the spaces they operate in, not just idealised data sheets.
+          </p>
+          <div class="tm-card-skills" style="position:relative;z-index:1">
+            <span class="tm-skill">HVAC Engineering</span>
+            <span class="tm-skill">NEBOSH Certified</span>
+            <span class="tm-skill">Building Systems</span>
+            <span class="tm-skill">Environmental Engineering</span>
+            <span class="tm-skill">HSE</span>
+            <span class="tm-skill">FUTA</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW WE WORK ════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg-lift);position:relative;overflow:hidden">
+  <div class="ghost-num" style="top:-3rem;left:-1rem">How</div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="reveal" style="margin-bottom:3rem">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>How We Work</div>
+      <h2 class="t-heading sec-hl">One team. No broken telephone.</h2>
+      <p class="sec-sub">Every discipline on the team was chosen to eliminate the handoff gaps that derail most IoT projects. We don't split critical decisions across disconnected vendors.</p>
+    </div>
+
+    <div class="values-grid reveal">
+      <div class="value-card">
+        <span class="value-num">01</span>
+        <div class="value-title">Integrated execution</div>
+        <p class="value-desc">Hardware, firmware, cloud pipeline, edge AI, energy architecture, data intelligence — one sprint, one delivery, one coherent system.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">02</span>
+        <div class="value-title">Field-first thinking</div>
+        <p class="value-desc">Every team member brings real-world deployment context. We design for unstable networks, power constraints, and physical environments — not ideal lab conditions.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">03</span>
+        <div class="value-title">Governance embedded</div>
+        <p class="value-desc">Security baseline, AI risk management, and privacy controls are part of the build spec from day one — not an audit afterthought.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">04</span>
+        <div class="value-title">Capability transfer</div>
+        <p class="value-desc">Every engagement ends with runbooks, documentation, and training. Your team leaves capable of operating and extending the system — independently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ════════════════════════════════════════════════════════ -->
+<section id="cta">
+  <div class="cta-radial"></div>
+  <div class="cta-grid"></div>
+  <div class="cta-ghost">Build</div>
+  <div class="cta-inner wrap reveal">
+    <div class="cta-tag">
+      <div style="width:5px;height:5px;border-radius:50%;background:var(--cy);animation:blink 2s infinite"></div>
+      Ready when you are
+    </div>
+    <h2 class="t-display cta-hl">Work with the team<br/>that <em>ships.</em></h2>
+    <p class="cta-sub">Bring your challenge, your constraints, and your deployment context. We'll map the right sprint path before any commitment is made.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-white">
+        Book a Discovery Call
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="about.html" class="btn btn-ghost-light">About the Lab</a>
+    </div>
+    <p class="cta-note">No obligation · typical response within 1 business day</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-wrap">
+          <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+            <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
+            <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
+            <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
+            <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+          </svg>
+          <span class="footer-brand">Sheffy Adey</span>
+        </div>
+        <p class="footer-desc">A product-development lab building AI-enabled IoT systems that are secure, interoperable, and measurable — from concept to deployed fleet.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-links">
+          <a href="services.html">AI Systems</a>
+          <a href="services.html">IoT Product Development</a>
+          <a href="services.html">Embedded Intelligence</a>
+          <a href="services.html">End-to-End Engineering</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Programmes</div>
+        <div class="footer-links">
+          <a href="process.html">Bootcamps</a>
+          <a href="process.html">Sprints</a>
+          <a href="process.html">Partnerships</a>
+          <a href="process.html">Toolkits</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="team.html">Team</a>
+          <a href="work.html">Case Studies</a>
+          <a href="faq.html">Knowledge Hub</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Sheffy Adey. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy &amp; Cookies</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="footer-tag">Built with <span>♥</span> Prototype fast. Validate hard. Scale responsibly.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
