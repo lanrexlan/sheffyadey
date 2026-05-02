@@ -82,7 +82,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url('/Images/bg_home_lab_device.webp');
+  background-image: url('https://images.unsplash.com/photo-1729254559897-65b6d17f4f1b?auto=format&fit=crop&w=1920&q=70&fm=webp');
   background-size: cover;
   background-position: center;
   opacity: .28;
