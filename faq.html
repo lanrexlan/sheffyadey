@@ -12,6 +12,9 @@
 
 /* ── Page-level nav ── */
 .hub-nav {
+  position: static !important;
+  top: auto !important;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   gap: .5rem;
@@ -496,7 +499,7 @@ details[open] .faq-toggle {
   <div class="wrap">
 
     <!-- Page navigation -->
-    <nav class="hub-nav" aria-label="Knowledge Hub sections">
+    <div class="hub-nav" role="navigation" aria-label="Knowledge Hub sections">
       <a class="hub-nav-link" href="#faq">Frequently Asked Questions</a>
       <a class="hub-nav-link" href="#how-it-works">How AI + IoT Projects Work</a>
       <a class="hub-nav-link" href="#risks">Common Deployment Risks</a>
@@ -504,7 +507,7 @@ details[open] .faq-toggle {
       <a class="hub-nav-link" href="#buyer">Buyer and Grant Notes</a>
       <a class="hub-nav-link" href="#glossary">Glossary</a>
       <a class="hub-nav-link" href="#resources">Resources</a>
-    </nav>
+    </div>
 
     <!-- ══ SECTION 1: FAQ ══ -->
     <div id="faq" class="hub-section">
