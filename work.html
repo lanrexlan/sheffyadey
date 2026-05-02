@@ -8,207 +8,1069 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+<style>
+
+/* ── Case study layout ── */
+.case-study {
+  border: 1px solid var(--bd);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--surf);
+  margin-bottom: 2.5rem;
+  transition: var(--t);
+}
+.case-study:hover {
+  border-color: var(--cy-bd);
+  box-shadow: var(--sh-md);
+}
+
+/* Header band */
+.cs-header {
+  padding: 1.85rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--bd);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+  background: rgba(0,212,242,.025);
+}
+.cs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: .85rem;
+  align-items: center;
+}
+.cs-tag {
+  font-family: var(--f-mono);
+  font-size: .6rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cy);
+  background: var(--cy-dim);
+  border: 1px solid var(--cy-bd);
+  padding: .2rem .6rem;
+  border-radius: var(--r-pill);
+}
+.cs-label {
+  font-family: var(--f-mono);
+  font-size: .6rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--tx-3);
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--bd);
+  padding: .2rem .6rem;
+  border-radius: var(--r-pill);
+}
+.cs-title {
+  font-family: var(--f-dis);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--tx);
+  line-height: 1.05;
+  margin-bottom: .65rem;
+}
+.cs-lead {
+  font-size: .9rem;
+  color: var(--tx-2);
+  line-height: 1.72;
+  max-width: 66ch;
+}
+.cs-metrics-strip {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  min-width: 160px;
+}
+.cs-metric {
+  background: var(--bg-lift);
+  border: 1px solid var(--bd);
+  border-radius: var(--r-sm);
+  padding: .7rem .9rem;
+  text-align: right;
+}
+.cs-metric-val {
+  font-family: var(--f-dis);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--cy);
+  line-height: 1;
+  display: block;
+}
+.cs-metric-key {
+  font-family: var(--f-mono);
+  font-size: .58rem;
+  color: var(--tx-3);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: .18rem;
+}
+
+/* Body grid */
+.cs-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 0;
+}
+.cs-narrative {
+  padding: 1.75rem 2rem;
+  border-right: 1px solid var(--bd);
+}
+.cs-section {
+  margin-bottom: 1.4rem;
+}
+.cs-section:last-child {
+  margin-bottom: 0;
+}
+.cs-section-label {
+  font-family: var(--f-mono);
+  font-size: .6rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cy);
+  margin-bottom: .5rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.cs-section-label::before {
+  content: '↳';
+  opacity: .6;
+}
+.cs-section-text {
+  font-size: .875rem;
+  color: var(--tx-2);
+  line-height: 1.7;
+}
+.cs-section-text strong {
+  color: var(--tx);
+  font-weight: 500;
+}
+.cs-arch-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  margin-top: .35rem;
+}
+.cs-arch-list li {
+  font-size: .84rem;
+  color: var(--tx-2);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.55;
+}
+.cs-arch-list li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cy);
+  position: absolute;
+  left: 0;
+  top: .55rem;
+}
+.cs-tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: .35rem;
+}
+
+/* Evidence panel */
+.cs-evidence {
+  padding: 1.5rem 1.6rem;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cs-evidence-title {
+  font-family: var(--f-mono);
+  font-size: .6rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--tx-2);
+  padding-bottom: .6rem;
+  border-bottom: 1px solid var(--bd);
+}
+.cs-ev-row {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+.cs-ev-key {
+  font-family: var(--f-mono);
+  font-size: .58rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--tx-3);
+}
+.cs-ev-val {
+  font-size: .82rem;
+  color: var(--tx-2);
+  line-height: 1.5;
+}
+.cs-ev-val strong {
+  color: var(--cy);
+  font-weight: 500;
+}
+
+/* Visual slots */
+.cs-visuals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--bd);
+  border-top: 1px solid var(--bd);
+}
+.cs-visual-slot {
+  background: var(--bg-lift);
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.cs-visual-slot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,212,242,.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0,212,242,.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.cs-visual-icon {
+  font-size: 1.6rem;
+  opacity: .4;
+}
+.cs-visual-label {
+  font-family: var(--f-mono);
+  font-size: .58rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--tx-3);
+  text-align: center;
+  line-height: 1.5;
+}
+.cs-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+/* Deliverables footer */
+.cs-footer {
+  border-top: 1px solid var(--bd);
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: rgba(0,212,242,.02);
+}
+.cs-footer-label {
+  font-family: var(--f-mono);
+  font-size: .6rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--tx-3);
+  white-space: nowrap;
+}
+.cs-deliverable {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--f-mono);
+  font-size: .6rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--tx-2);
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--bd);
+  padding: .22rem .6rem;
+  border-radius: var(--r-pill);
+}
+.cs-deliverable::before {
+  content: '✓';
+  color: var(--cy);
+  font-size: .65rem;
+}
+
+/* Why it matters callout */
+.cs-why {
+  margin-top: 1.1rem;
+  padding: .9rem 1rem;
+  background: rgba(0,212,242,.04);
+  border: 1px solid var(--cy-bd);
+  border-radius: var(--r-sm);
+}
+.cs-why-label {
+  font-family: var(--f-mono);
+  font-size: .58rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cy);
+  margin-bottom: .35rem;
+}
+.cs-why-text {
+  font-size: .84rem;
+  color: var(--tx-2);
+  line-height: 1.65;
+}
+
+/* Divider between sections */
+.cs-rule {
+  height: 1px;
+  background: var(--bd);
+  margin: 1.25rem 0;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+  .cs-body { grid-template-columns: 1fr; }
+  .cs-narrative { border-right: none; border-bottom: 1px solid var(--bd); }
+  .cs-evidence { background: var(--bg-lift); }
+  .cs-header { grid-template-columns: 1fr; }
+  .cs-metrics-strip { flex-direction: row; }
+  .cs-metric { text-align: left; }
+}
+@media (max-width: 720px) {
+  .cs-visuals { grid-template-columns: 1fr; }
+  .cs-visual-slot { aspect-ratio: 16/6; }
+  .cs-header { padding: 1.35rem 1.25rem 1.1rem; }
+  .cs-narrative { padding: 1.35rem 1.25rem; }
+  .cs-evidence { padding: 1.25rem; }
+  .cs-footer { padding: .9rem 1.25rem; gap: .75rem; }
+  .cs-metrics-strip { flex-direction: column; }
+}
+</style>
 </head>
 <body>
+
+<!-- ══════════════ NAV ══════════════ -->
 <nav id="navbar">
-<div class="wrap nav-inner">
-<a href="index.html" class="nav-logo">
-<svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark">
-<rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
-<rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
-<circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
-<circle cx="15" cy="15" r="6.5" stroke="rgba(0,212,242,0.18)" stroke-width="1"/>
-<line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-</svg>
-<span class="nav-brand">Sheffy Adey</span>
-</a>
-<div class="nav-links" id="primary-nav">
-<a href="services.html">Services</a>
-<a href="work.html">Work</a>
-<a href="process.html">Method</a>
-<a href="about.html">Why Us</a>
-<a href="team.html">Team</a>
-<a href="faq.html">Knowledge Hub</a>
-</div>
-<a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
-<button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primary-nav" aria-expanded="false" onclick="toggleMenu()">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
-</button>
-</div>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark">
+        <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
+        <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
+        <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
+        <circle cx="15" cy="15" r="6.5" stroke="rgba(0,212,242,0.18)" stroke-width="1"/>
+        <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+      </svg>
+      <span class="nav-brand">Sheffy Adey</span>
+    </a>
+    <div class="nav-links" id="primary-nav">
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="process.html">Method</a>
+      <a href="about.html">Why Us</a>
+      <a href="faq.html">Knowledge Hub</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
+    <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primary-nav" aria-expanded="false" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- ══════════════ PAGE HERO ══════════════ -->
 <section class="page-hero">
-<div class="hero-grid">
-</div>
-<div class="noise">
-</div>
-<div class="wrap">
-<div class="hero-tag">
-<div class="hero-tag-dot">
-</div>Case Studies</div>
-<h1 class="t-display page-title">Representative systems with measurable outcomes.</h1>
-<p class="page-sub">Each engagement balances technical depth with operational reliability. These summaries show the problem, system approach, and practical outcomes.</p>
-</div>
+  <div class="hero-grid"></div>
+  <div class="noise"></div>
+  <div class="wrap page-intro">
+    <div>
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>Case Studies
+      </div>
+      <h1 class="t-display page-title">Proof of delivery, not just ideas.</h1>
+      <p class="page-sub">Our work is scoped around deployment realities: power budgets, unstable networks, data quality, security, field conditions, and the client's ability to operate the system after handover. These summaries reflect what was actually built, constrained, and delivered.</p>
+    </div>
+    <div class="page-stat-panel">
+      <div class="page-stat">
+        <span class="page-stat-key">Projects below</span>
+        <span class="page-stat-val">Representative</span>
+      </div>
+      <div class="page-stat">
+        <span class="page-stat-key">Client details</span>
+        <span class="page-stat-val">Anonymized</span>
+      </div>
+      <div class="page-stat">
+        <span class="page-stat-key">Outcomes shown</span>
+        <span class="page-stat-val">System-level</span>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ══════════════ DISCLAIMER BAR ══════════════ -->
+<div style="background:var(--surf);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
+  <div class="wrap" style="padding:.9rem 0;display:flex;align-items:center;gap:.75rem">
+    <span style="font-family:var(--f-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cy)">Note</span>
+    <span style="font-size:.82rem;color:var(--tx-3);line-height:1.5">The projects below are representative engagements. Client identities, specific operational data, and commercially sensitive details are anonymized. System architectures, technical approaches, and outcome types are representative of real work undertaken.</span>
+  </div>
+</div>
+
+<!-- ══════════════ CASE STUDIES ══════════════ -->
 <section class="section">
-<div class="wrap">
-<div class="proj-grid">
-<article class="proj-card reveal">
-<div class="proj-top">
-<div class="proj-tag">Industrial Reliability</div>
-<div class="proj-metric-big">
-<span class="pmb-val">38%</span>
-<span class="pmb-unit">fewer stoppages</span>
-</div>
-</div>
-<div class="proj-body">
-<div class="proj-title">Predictive Motor Health Platform</div>
-<p class="proj-desc">
-<strong>Problem:</strong> Unplanned equipment failures. <br>
-<strong>Solution:</strong> Vibration + thermal sensing with on-device anomaly scoring and operator alerts. </p>
-<div class="proj-chips">
-<span class="proj-chip">STM32</span>
-<span class="proj-chip">Edge AI</span>
-<span class="proj-chip">Grafana</span>
-</div>
-</div>
-<div class="proj-foot">
-<div class="proj-outcome">Outcome: <strong>3 failures intercepted pre-shutdown</strong>
-</div>
-</div>
-</article>
-<article class="proj-card reveal d1">
-<div class="proj-top">
-<div class="proj-tag">Cold Chain</div>
-<div class="proj-metric-big">
-<span class="pmb-val">100%</span>
-<span class="pmb-unit">audit traceability</span>
-</div>
-</div>
-<div class="proj-body">
-<div class="proj-title">Pharma Transport Integrity Tracker</div>
-<p class="proj-desc">
-<strong>Problem:</strong> Temperature excursions with weak evidence trails. <br>
-<strong>Solution:</strong> GPS + temperature telemetry with immutable compliance events and edge excursion detection.</p>
-<div class="proj-chips">
-<span class="proj-chip">nRF9160</span>
-<span class="proj-chip">Azure IoT</span>
-<span class="proj-chip">LwM2M</span>
-</div>
-</div>
-<div class="proj-foot">
-<div class="proj-outcome">Outcome: <strong>4-country pilot with zero regulatory exceptions</strong>
-</div>
-</div>
-</article>
-<article class="proj-card reveal d2">
-<div class="proj-top">
-<div class="proj-tag">Smart Environment</div>
-<div class="proj-metric-big">
-<span class="pmb-val">99.1%</span>
-<span class="pmb-unit">fleet uptime</span>
-</div>
-</div>
-<div class="proj-body">
-<div class="proj-title">Urban Air Intelligence Mesh</div>
-<p class="proj-desc">
-<strong>Problem:</strong> Patchy air quality visibility across high-traffic zones. <br>
-<strong>Solution:</strong> Low-power mesh sensors with cloud analytics and geofenced anomaly events.</p>
-<div class="proj-chips">
-<span class="proj-chip">ESP32-S3</span>
-<span class="proj-chip">MQTT</span>
-<span class="proj-chip">AWS IoT Core</span>
-</div>
-</div>
-<div class="proj-foot">
-<div class="proj-outcome">Outcome: <strong>City pilot moved to phase-two scale plan</strong>
-</div>
-</div>
-</article>
-</div>
-</div>
+  <div class="wrap">
+
+    <!-- ── CASE 1: Air Quality ── -->
+    <div class="case-study reveal">
+
+      <div class="cs-header">
+        <div>
+          <div class="cs-meta">
+            <span class="cs-tag">Smart Environment</span>
+            <span class="cs-tag">Urban Infrastructure</span>
+            <span class="cs-label">Representative project · Anonymized deployment</span>
+          </div>
+          <div class="cs-title">Air Quality Intelligence Network</div>
+          <p class="cs-lead">A distributed low-power sensor mesh deployed across high-traffic urban zones, producing geofenced air quality events, fleet-level monitoring, and a cloud analytics pipeline — purpose-built for city-scale environmental monitoring without continuous connectivity.</p>
+        </div>
+        <div class="cs-metrics-strip">
+          <div class="cs-metric">
+            <span class="cs-metric-val">99.1%</span>
+            <span class="cs-metric-key">Fleet uptime</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric-val">&lt;4 min</span>
+            <span class="cs-metric-key">Alert latency</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric-val">Phase 2</span>
+            <span class="cs-metric-key">Scale approved</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-body">
+        <div class="cs-narrative">
+
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <p class="cs-section-text">A local authority environmental programme required fine-grained air quality monitoring across high-footfall and high-traffic zones. Existing infrastructure provided city-level averages from a small number of static reference stations — insufficient for identifying pollution hotspots at street level or triggering hyperlocal alerts.</p>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Problem</div>
+            <p class="cs-section-text">No deployable sensing solution existed at the required density and cost point. Reference station data was too coarse for zone-level decision making. The programme needed a pilot system that could demonstrate street-level resolution, continuous uptime in outdoor conditions, and cloud-connected analytics within a grant milestone window.</p>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Constraints</div>
+            <ul class="cs-arch-list">
+              <li>No mains power available at most deployment sites — battery and solar budget critical</li>
+              <li>Intermittent LTE coverage in dense urban canyons requiring store-and-forward logic</li>
+              <li>Enclosure rated for outdoor exposure including rain, direct sun, and temperature swing</li>
+              <li>Grant milestone requiring documented pilot readiness within 6 weeks of build start</li>
+              <li>Client team had no embedded engineering capability — full handover required</li>
+            </ul>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Sheffy Adey contribution</div>
+            <p class="cs-section-text">Full-stack engagement from sensor selection and power budgeting through firmware, cloud pipeline, dashboard, and handover pack. We selected sensor array, wrote firmware with local store-and-forward and OTA update capability, designed the AWS IoT Core telemetry pipeline, and built the Grafana dashboard with geofenced anomaly alerting. Engagement closed with a written handover pack and a recorded operator training session.</p>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">System architecture</div>
+            <ul class="cs-arch-list">
+              <li><strong>Device layer:</strong> ESP32-S3 nodes with PM2.5/PM10, NO₂, O₃, temperature, humidity, and barometric sensors</li>
+              <li><strong>Connectivity:</strong> MQTT over LTE-M with local 4 MB flash store-and-forward buffer for connectivity drop-out</li>
+              <li><strong>Edge logic:</strong> On-device threshold detection; geofenced anomaly classification without cloud round-trip</li>
+              <li><strong>Cloud pipeline:</strong> AWS IoT Core → Lambda → InfluxDB time-series store</li>
+              <li><strong>Observability:</strong> Grafana dashboard with per-node health, zone-level air quality index, and alert routing</li>
+              <li><strong>OTA:</strong> AWS IoT Jobs with rollback on failed update — no manual firmware access required</li>
+            </ul>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Technologies and domains</div>
+            <div class="cs-tech-chips">
+              <span class="stack-chip">ESP32-S3</span>
+              <span class="stack-chip">MQTT</span>
+              <span class="stack-chip">LTE-M</span>
+              <span class="stack-chip">AWS IoT Core</span>
+              <span class="stack-chip">InfluxDB</span>
+              <span class="stack-chip">Grafana</span>
+              <span class="stack-chip">FreeRTOS</span>
+              <span class="stack-chip">AWS Lambda</span>
+              <span class="stack-chip">OTA via IoT Jobs</span>
+            </div>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Measurable outputs</div>
+            <ul class="cs-arch-list">
+              <li>99.1% fleet uptime across a 6-week pilot (including 3 connectivity outage events handled by store-and-forward)</li>
+              <li>Sub-4-minute alert latency from threshold breach to operator notification</li>
+              <li>Zero data loss events during pilot period attributable to system design</li>
+              <li>Pilot review passed; phase-two scale plan approved by programme team</li>
+            </ul>
+          </div>
+
+          <div class="cs-why">
+            <div class="cs-why-label">Why it matters</div>
+            <p class="cs-why-text">Environmental monitoring at street resolution requires hardware designed for long-term unattended operation — not adapted office sensors. This engagement demonstrates capacity to design for real field conditions: power constraints, connectivity dropout, enclosure requirements, and operator handover — not just a connected prototype that works in a controlled setting.</p>
+          </div>
+
+        </div>
+
+        <div class="cs-evidence">
+          <div class="cs-evidence-title">System evidence panel</div>
+
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Deployment environment</div>
+            <div class="cs-ev-val">Outdoor urban — streetlight poles, junction furniture, building fascias</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Devices / sensors</div>
+            <div class="cs-ev-val">ESP32-S3 nodes · <strong>PM2.5, PM10, NO₂, O₃</strong> · DHT22 · BMP390</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Connectivity</div>
+            <div class="cs-ev-val">LTE-M primary · local store-and-forward buffer · OTA over AWS IoT Jobs</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Data pipeline</div>
+            <div class="cs-ev-val">MQTT → AWS IoT Core → Lambda → InfluxDB time-series</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Intelligence layer</div>
+            <div class="cs-ev-val">On-device threshold classification · cloud-side geofenced anomaly detection</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Dashboard / alerts</div>
+            <div class="cs-ev-val">Grafana · per-node health · zone AQI panels · email + webhook alert routing</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Governance / handover</div>
+            <div class="cs-ev-val">Written runbook · security checklist · maintenance guide · recorded operator training session</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Standards referenced</div>
+            <div class="cs-ev-val">NISTIR 8259 · ETSI EN 303 645 · grant milestone reporting format</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual slots -->
+      <div class="cs-visuals">
+        <!-- TODO: Replace with real project image: /images/case-air-quality-node.webp -->
+        <div class="cs-visual-slot">
+          <div class="cs-visual-icon">📡</div>
+          <div class="cs-visual-label">Field device<br>Street-mounted sensor node</div>
+        </div>
+        <!-- TODO: Replace with real dashboard screenshot: /images/case-air-quality-dashboard.webp -->
+        <div class="cs-visual-slot">
+          <div class="cs-visual-icon">📊</div>
+          <div class="cs-visual-label">Grafana dashboard<br>Zone AQI + fleet health</div>
+        </div>
+        <!-- TODO: Replace with real architecture diagram: /images/case-air-quality-arch.webp -->
+        <div class="cs-visual-slot">
+          <div class="cs-visual-icon">🗺</div>
+          <div class="cs-visual-label">Architecture diagram<br>Device → pipeline → cloud</div>
+        </div>
+      </div>
+
+      <div class="cs-footer">
+        <span class="cs-footer-label">Handover deliverables</span>
+        <span class="cs-deliverable">Device architecture brief</span>
+        <span class="cs-deliverable">Firmware + OTA configuration</span>
+        <span class="cs-deliverable">Telemetry pipeline</span>
+        <span class="cs-deliverable">Grafana dashboard</span>
+        <span class="cs-deliverable">Alert routing plan</span>
+        <span class="cs-deliverable">Deployment runbook</span>
+        <span class="cs-deliverable">Security checklist</span>
+        <span class="cs-deliverable">Operator training (recorded)</span>
+      </div>
+
+    </div><!-- /case-study -->
+
+
+    <!-- ── CASE 2: Equipment Health ── -->
+    <div class="case-study reveal d1">
+
+      <div class="cs-header">
+        <div>
+          <div class="cs-meta">
+            <span class="cs-tag">Industrial Reliability</span>
+            <span class="cs-tag">Predictive Maintenance</span>
+            <span class="cs-label">Representative project · Anonymized deployment</span>
+          </div>
+          <div class="cs-title">Equipment Health Monitoring System</div>
+          <p class="cs-lead">An on-device anomaly detection system for rotating industrial equipment — combining vibration and thermal sensing with edge inference to score motor health in real time, trigger operator alerts, and reduce unplanned stoppages without requiring cloud connectivity at the point of detection.</p>
+        </div>
+        <div class="cs-metrics-strip">
+          <div class="cs-metric">
+            <span class="cs-metric-val">38%</span>
+            <span class="cs-metric-key">Fewer stoppages (pilot)</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric-val">3</span>
+            <span class="cs-metric-key">Failures intercepted pre-shutdown</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric-val">&lt;200ms</span>
+            <span class="cs-metric-key">Edge inference latency</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-body">
+        <div class="cs-narrative">
+
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <p class="cs-section-text">A light manufacturing operation was experiencing recurring unplanned downtime from motor and drivetrain failures. Maintenance was reactive: failures were discovered when equipment stopped, not before. The team had no condition monitoring in place and limited technical resource to deploy or maintain a complex system.</p>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Problem</div>
+            <p class="cs-section-text">Standard vibration monitoring solutions required network connectivity at the machine level — impractical on the factory floor. Cloud-first approaches introduced unacceptable latency for safety-relevant alerts. The client needed a system that could detect anomalous motor behavior locally and alert operators in near-real-time, with telemetry batched to the cloud for fleet-level trend analysis.</p>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Constraints</div>
+            <ul class="cs-arch-list">
+              <li>No reliable Wi-Fi at machine mounting points — inference must run on-device</li>
+              <li>Detection latency requirement: under 500ms from anomalous signal to alert trigger</li>
+              <li>Model must run within 256 KB RAM and 1 MB flash on target MCU</li>
+              <li>No full-time ML engineer on client side — model must be interpretable and maintainable by operations team</li>
+              <li>Hazardous area certification requirements for physical enclosure</li>
+            </ul>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Sheffy Adey contribution</div>
+            <p class="cs-section-text">Sensor selection, enclosure specification, firmware development, edge model design and compression, cloud telemetry pipeline, Grafana dashboard, and full governance pack. We designed a lightweight anomaly scoring model trained on baseline vibration signatures, quantized to INT8 and deployed to the STM32 target. Threshold and alert logic were tuned in close collaboration with the maintenance lead during a 2-week calibration period on live equipment.</p>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">System architecture</div>
+            <ul class="cs-arch-list">
+              <li><strong>Device layer:</strong> STM32F4 MCU with ADXL345 3-axis accelerometer and MLX90614 IR temperature sensor</li>
+              <li><strong>Edge inference:</strong> TensorFlow Lite Micro — INT8 quantized autoencoder for vibration anomaly scoring</li>
+              <li><strong>Alert logic:</strong> On-device scoring against configurable threshold; buzzer + indicator LED for immediate operator alert without cloud dependency</li>
+              <li><strong>Connectivity:</strong> MQTT over Wi-Fi via co-located gateway for batch telemetry and model updates</li>
+              <li><strong>Cloud pipeline:</strong> Azure IoT Hub → Stream Analytics → TimescaleDB</li>
+              <li><strong>Observability:</strong> Grafana dashboard showing health score trend, alert history, temperature, and vibration FFT snapshots</li>
+            </ul>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Technologies and domains</div>
+            <div class="cs-tech-chips">
+              <span class="stack-chip">STM32F4</span>
+              <span class="stack-chip">TensorFlow Lite Micro</span>
+              <span class="stack-chip">ADXL345</span>
+              <span class="stack-chip">INT8 quantization</span>
+              <span class="stack-chip">MQTT</span>
+              <span class="stack-chip">Azure IoT Hub</span>
+              <span class="stack-chip">Stream Analytics</span>
+              <span class="stack-chip">TimescaleDB</span>
+              <span class="stack-chip">Grafana</span>
+            </div>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Measurable outputs</div>
+            <ul class="cs-arch-list">
+              <li>3 motors flagged by the system and inspected before shutdown during the 6-week pilot period</li>
+              <li>38% reduction in unplanned stoppages compared to equivalent prior period (client-reported)</li>
+              <li>Sub-200ms inference latency measured on target hardware under continuous load</li>
+              <li>Model false-positive rate calibrated to under 2% during 2-week baseline tuning period</li>
+            </ul>
+          </div>
+
+          <div class="cs-why">
+            <div class="cs-why-label">Why it matters</div>
+            <p class="cs-why-text">Predictive maintenance in constrained industrial environments requires edge-first inference design — not a cloud model with a local sensor attached. This engagement shows the capacity to design models within MCU memory budgets, tune detection thresholds against real operational signatures, and produce a system that operators can interpret and trust. That combination is what separates a working pilot from a demo.</p>
+          </div>
+
+        </div>
+
+        <div class="cs-evidence">
+          <div class="cs-evidence-title">System evidence panel</div>
+
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Deployment environment</div>
+            <div class="cs-ev-val">Indoor light manufacturing — motor housings, conveyor drivetrains</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Devices / sensors</div>
+            <div class="cs-ev-val">STM32F4 MCU · <strong>ADXL345 accelerometer</strong> · MLX90614 IR temperature</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Connectivity</div>
+            <div class="cs-ev-val">On-device alert (no network required) · MQTT batch telemetry via gateway</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Data pipeline</div>
+            <div class="cs-ev-val">MQTT → Azure IoT Hub → Stream Analytics → TimescaleDB</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Intelligence layer</div>
+            <div class="cs-ev-val"><strong>TFLite Micro autoencoder</strong> · INT8 quantized · on-device scoring</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Dashboard / alerts</div>
+            <div class="cs-ev-val">Grafana · health score trend · FFT snapshots · alert history · email routing</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Governance / handover</div>
+            <div class="cs-ev-val">Model card · threshold rationale doc · maintenance guide · operator runbook · training session</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Standards referenced</div>
+            <div class="cs-ev-val">NIST AI RMF · IEC 62443 baseline · NISTIR 8259</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-visuals">
+        <!-- TODO: Replace with real project image: /images/case-equipment-health-node.webp -->
+        <div class="cs-visual-slot">
+          <div class="cs-visual-icon">⚙️</div>
+          <div class="cs-visual-label">Sensor node<br>Motor-mounted enclosure</div>
+        </div>
+        <!-- TODO: Replace with real dashboard screenshot: /images/case-equipment-health-dashboard.webp -->
+        <div class="cs-visual-slot">
+          <div class="cs-visual-icon">📈</div>
+          <div class="cs-visual-label">Health score dashboard<br>Grafana trend + alert log</div>
+        </div>
+        <!-- TODO: Replace with real architecture diagram: /images/case-equipment-health-arch.webp -->
+        <div class="cs-visual-slot">
+          <div class="cs-visual-icon">🔧</div>
+          <div class="cs-visual-label">Architecture diagram<br>Edge inference → cloud telemetry</div>
+        </div>
+      </div>
+
+      <div class="cs-footer">
+        <span class="cs-footer-label">Handover deliverables</span>
+        <span class="cs-deliverable">Sensor selection brief</span>
+        <span class="cs-deliverable">Firmware + inference runtime</span>
+        <span class="cs-deliverable">Model card</span>
+        <span class="cs-deliverable">Threshold rationale document</span>
+        <span class="cs-deliverable">Azure pipeline config</span>
+        <span class="cs-deliverable">Grafana dashboard</span>
+        <span class="cs-deliverable">Maintenance guide</span>
+        <span class="cs-deliverable">Operator runbook</span>
+      </div>
+
+    </div><!-- /case-study -->
+
+
+    <!-- ── CASE 3: Cold Chain ── -->
+    <div class="case-study reveal d2">
+
+      <div class="cs-header">
+        <div>
+          <div class="cs-meta">
+            <span class="cs-tag">Cold Chain</span>
+            <span class="cs-tag">Compliance and Traceability</span>
+            <span class="cs-label">Representative project · Anonymized deployment</span>
+          </div>
+          <div class="cs-title">Cold Chain Integrity Tracker</div>
+          <p class="cs-lead">A GPS-enabled temperature and humidity monitoring system for pharmaceutical transport, producing tamper-evident excursion records, immutable compliance event logs, and edge-triggered alerts — designed to meet regulatory traceability obligations across a multi-country distribution network.</p>
+        </div>
+        <div class="cs-metrics-strip">
+          <div class="cs-metric">
+            <span class="cs-metric-val">100%</span>
+            <span class="cs-metric-key">Audit traceability (pilot)</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric-val">4</span>
+            <span class="cs-metric-key">Countries in pilot network</span>
+          </div>
+          <div class="cs-metric">
+            <span class="cs-metric-val">0</span>
+            <span class="cs-metric-key">Regulatory exceptions raised</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-body">
+        <div class="cs-narrative">
+
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <p class="cs-section-text">A pharmaceutical logistics operator needed to demonstrate end-to-end temperature chain integrity across a multi-country distribution network. Regulatory requirements demanded a complete, tamper-evident record of environmental conditions at each stage of transit — from cold store dispatch to final delivery confirmation. Existing paper-based and USB logger processes produced incomplete records and created gaps that triggered compliance queries.</p>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Problem</div>
+            <p class="cs-section-text">The operator's current monitoring approach failed to produce continuous records during transit. USB loggers were retrieved only on delivery. Excursion events were identified retrospectively, with no location context, making root cause identification and regulatory reporting difficult. The system needed to produce real-time excursion alerts, GPS-correlated records, and a compliance-ready audit trail without relying on uninterrupted internet connectivity across international logistics routes.</p>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Constraints</div>
+            <ul class="cs-arch-list">
+              <li>Connectivity unreliable across transit — system must operate fully offline and sync on reconnection</li>
+              <li>Device must survive vibration, temperature extremes, and repeated handling cycles</li>
+              <li>Excursion records must be tamper-evident and non-repudiable for regulatory submission</li>
+              <li>Battery life requirement: 72 hours minimum between charges at continuous logging rate</li>
+              <li>Multi-country SIM and network operator dependencies — roaming reliability critical</li>
+            </ul>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Sheffy Adey contribution</div>
+            <p class="cs-section-text">Hardware specification, firmware development, cloud pipeline design, compliance event schema, dashboard, and handover pack. We specified the nRF9160-based device with multi-band LTE-M/NB-IoT and GNSS, implemented a store-and-forward firmware with local cryptographic signing of excursion events, and designed the Azure IoT Hub pipeline with Power BI compliance reporting. Engagement included a 2-week transit simulation test before deployment across the 4-country pilot network.</p>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">System architecture</div>
+            <ul class="cs-arch-list">
+              <li><strong>Device layer:</strong> nRF9160 SiP with integrated LTE-M/NB-IoT modem and GNSS; SHT40 temperature/humidity; accelerometer for shock logging</li>
+              <li><strong>Offline operation:</strong> 72-hour local flash logging with HMAC-signed event records; sync on LTE reconnection</li>
+              <li><strong>Excursion detection:</strong> On-device threshold evaluation; immediate alert queued for transmission at next connectivity window</li>
+              <li><strong>Cloud pipeline:</strong> LwM2M → Azure IoT Hub → Blob storage for raw records; Azure Functions for excursion event processing</li>
+              <li><strong>Compliance reporting:</strong> Power BI compliance dashboard with per-shipment excursion log, GPS track, and tamper-evidence verification</li>
+              <li><strong>Audit trail:</strong> Cryptographically signed event records with timestamp, GPS coordinate, and sensor reading — immutable in Blob storage</li>
+            </ul>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Technologies and domains</div>
+            <div class="cs-tech-chips">
+              <span class="stack-chip">nRF9160</span>
+              <span class="stack-chip">LTE-M / NB-IoT</span>
+              <span class="stack-chip">LwM2M</span>
+              <span class="stack-chip">GNSS</span>
+              <span class="stack-chip">HMAC signing</span>
+              <span class="stack-chip">Azure IoT Hub</span>
+              <span class="stack-chip">Azure Functions</span>
+              <span class="stack-chip">Blob Storage</span>
+              <span class="stack-chip">Power BI</span>
+              <span class="stack-chip">Zephyr RTOS</span>
+            </div>
+          </div>
+
+          <div class="cs-rule"></div>
+
+          <div class="cs-section">
+            <div class="cs-section-label">Measurable outputs</div>
+            <ul class="cs-arch-list">
+              <li>100% shipment traceability maintained across 4-country pilot — every shipment produced a complete, signed environmental record</li>
+              <li>Zero regulatory exceptions raised during the pilot period</li>
+              <li>Excursion detection confirmed within 8 minutes of threshold breach during offline transit simulation</li>
+              <li>72-hour battery life verified across repeated transit simulation cycles at −20°C minimum ambient</li>
+            </ul>
+          </div>
+
+          <div class="cs-why">
+            <div class="cs-why-label">Why it matters</div>
+            <p class="cs-why-text">Cold chain compliance is not solved by connectivity — it is solved by guaranteed local record integrity when connectivity fails. This engagement demonstrates the capacity to design cryptographically sound offline logging, multi-country connectivity handling, and compliance-ready reporting structures that satisfy regulatory reviewers — not just operations teams. The handover documentation was structured to support regulatory submission directly.</p>
+          </div>
+
+        </div>
+
+        <div class="cs-evidence">
+          <div class="cs-evidence-title">System evidence panel</div>
+
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Deployment environment</div>
+            <div class="cs-ev-val">Refrigerated transport · ambient and frozen zone · multi-country LTE</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Devices / sensors</div>
+            <div class="cs-ev-val">nRF9160 SiP · <strong>SHT40 temp/humidity</strong> · GNSS · accelerometer</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Connectivity</div>
+            <div class="cs-ev-val">LTE-M / NB-IoT multi-band · store-and-forward · sync on reconnection</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Data pipeline</div>
+            <div class="cs-ev-val">LwM2M → Azure IoT Hub → Blob storage + Azure Functions</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Intelligence layer</div>
+            <div class="cs-ev-val">On-device threshold detection · HMAC-signed excursion events · GPS-correlated records</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Dashboard / alerts</div>
+            <div class="cs-ev-val">Power BI compliance dashboard · shipment GPS track · excursion event log · tamper verification</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Governance / handover</div>
+            <div class="cs-ev-val">Regulatory submission template · compliance checklist · audit trail specification · operator SOP</div>
+          </div>
+          <div class="cs-ev-row">
+            <div class="cs-ev-key">Standards referenced</div>
+            <div class="cs-ev-val">NISTIR 8259 · EU GMP Annex 15 (traceability principles) · GDPR data handling</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-visuals">
+        <!-- TODO: Replace with real project image: /images/case-cold-chain-device.webp -->
+        <div class="cs-visual-slot">
+          <div class="cs-visual-icon">🌡️</div>
+          <div class="cs-visual-label">Tracking device<br>Ruggedized transport unit</div>
+        </div>
+        <!-- TODO: Replace with real dashboard screenshot: /images/case-cold-chain-dashboard.webp -->
+        <div class="cs-visual-slot">
+          <div class="cs-visual-icon">🗂️</div>
+          <div class="cs-visual-label">Compliance dashboard<br>Power BI shipment + excursion log</div>
+        </div>
+        <!-- TODO: Replace with real architecture diagram: /images/case-cold-chain-arch.webp -->
+        <div class="cs-visual-slot">
+          <div class="cs-visual-icon">🔐</div>
+          <div class="cs-visual-label">Architecture diagram<br>Offline signing → cloud audit trail</div>
+        </div>
+      </div>
+
+      <div class="cs-footer">
+        <span class="cs-footer-label">Handover deliverables</span>
+        <span class="cs-deliverable">Device specification</span>
+        <span class="cs-deliverable">Firmware + signing logic</span>
+        <span class="cs-deliverable">Azure pipeline config</span>
+        <span class="cs-deliverable">Power BI compliance dashboard</span>
+        <span class="cs-deliverable">Audit trail specification</span>
+        <span class="cs-deliverable">Regulatory submission template</span>
+        <span class="cs-deliverable">Operator SOP</span>
+        <span class="cs-deliverable">Security checklist</span>
+      </div>
+
+    </div><!-- /case-study -->
+
+  </div>
 </section>
+
+<!-- ══════════════ CTA ══════════════ -->
 <section id="cta">
-<div class="cta-radial">
-</div>
-<div class="cta-grid">
-</div>
-<div class="cta-inner wrap reveal">
-<h2 class="t-display cta-hl">Want your case study here next?</h2>
-<p class="cta-sub">If you need measurable outcomes, we should talk scope and success metrics.</p>
-<div class="cta-actions">
-<a href="contact.html" class="btn btn-white">Book a Discovery Call</a>
-</div>
-</div>
+  <div class="cta-radial"></div>
+  <div class="cta-grid"></div>
+  <div class="cta-inner wrap reveal">
+    <div class="cta-tag">
+      <div style="width:5px;height:5px;border-radius:50%;background:var(--cy);animation:blink 2s infinite"></div>
+      Start a conversation
+    </div>
+    <h2 class="t-display cta-hl">Want your project here next?</h2>
+    <p class="cta-sub">If you need measurable, documented outcomes from a system designed for real operating conditions — tell us the constraints. We will confirm whether and how we can help before any scope is proposed.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-white">Start a Project
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="services.html" class="btn btn-ghost-light">See Our Services</a>
+    </div>
+    <p class="cta-note">First call is 45 minutes. We confirm fit before scope is proposed.</p>
+  </div>
 </section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
-<div class="wrap">
-<div class="footer-top">
-<div>
-<div class="footer-brand-wrap">
-<svg width="22" height="22" viewBox="0 0 30 30" fill="none">
-<rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
-<rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
-<circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
-<line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-</svg>
-<span class="footer-brand">Sheffy Adey</span>
-</div>
-<p class="footer-desc">A product-development lab building AI-enabled IoT systems that are secure, interoperable, and measurable — from concept to deployed fleet.</p>
-</div>
-<div>
-<div class="footer-col-title">Services</div>
-<div class="footer-links">
-<a href="services.html">AI Systems</a>
-<a href="services.html">IoT Product Development</a>
-<a href="services.html">Embedded Intelligence</a>
-<a href="services.html">End-to-End Engineering</a>
-</div>
-</div>
-<div>
-<div class="footer-col-title">Programmes</div>
-<div class="footer-links">
-<a href="process.html">Bootcamps</a>
-<a href="process.html">Sprints</a>
-<a href="process.html">Partnerships</a>
-<a href="process.html">Toolkits</a>
-</div>
-</div>
-<div>
-<div class="footer-col-title">Company</div>
-<div class="footer-links">
-<a href="about.html">About</a>
-<a href="work.html">Case Studies</a>
-<a href="faq.html">Knowledge Hub</a>
-<a href="process.html">Trust &amp; Governance</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</div>
-<div class="footer-rule">
-</div>
-<div class="footer-bottom">
-<div class="footer-copy">© 2025 Sheffy Adey. All rights reserved.</div>
-<div class="footer-legal">
-<a href="#">Privacy &amp; Cookies</a>
-<a href="#">Accessibility</a>
-<a href="#">Terms</a>
-</div>
-<div class="footer-tag">Built with <span>♥</span> Prototype fast. Validate hard. Scale responsibly.</div>
-</div>
-</div>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-wrap">
+          <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+            <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
+            <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
+            <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
+            <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+          </svg>
+          <span class="footer-brand">Sheffy Adey</span>
+        </div>
+        <p class="footer-desc">A product-development lab building AI-enabled IoT systems that are secure, interoperable, and measurable — from concept to deployed fleet.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-links">
+          <a href="services.html">Device and Embedded Systems</a>
+          <a href="services.html">Data and Intelligence</a>
+          <a href="services.html">Cloud and Integration</a>
+          <a href="services.html">Governance and Transfer</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Programmes</div>
+        <div class="footer-links">
+          <a href="process.html">Discovery Sprint</a>
+          <a href="process.html">Pilot Build Sprint</a>
+          <a href="process.html">System Recovery</a>
+          <a href="process.html">Capability Transfer</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="work.html">Case Studies</a>
+          <a href="faq.html">Knowledge Hub</a>
+          <a href="process.html">Trust &amp; Governance</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Sheffy Adey. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy &amp; Cookies</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="footer-tag">Built with <span>♥</span> Prototype fast. Validate hard. Scale responsibly.</div>
+    </div>
+  </div>
 </footer>
-<script src="main.js">
-</script>
+
+<script src="main.js"></script>
 </body>
 </html>
