@@ -82,7 +82,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url('/Images/bg_home_lab_device.webp');
+  background-image: var(--section-bg-image);
   background-size: cover;
   background-position: center;
   opacity: .28;
