@@ -74,7 +74,13 @@
 }
 
 #hero {
-  isolation: isolate;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(96px, 11vh, 115px) 0 clamp(64px, 8vh, 90px);
 }
 
 #hero::before {
@@ -148,6 +154,272 @@
   aspect-ratio: 16 / 9;
   position: relative;
   z-index: 1;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+.hero-hl,
+.hero-sub,
+.sec-hl,
+.sec-sub,
+.b-title,
+.b-desc,
+.proj-title,
+.proj-desc,
+.step-name,
+.step-desc,
+.why-pt-title,
+.why-pt p,
+.cta-title,
+.cta-sub,
+.page-title,
+.page-sub {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    width: min(100% - 1.25rem, 1200px);
+  }
+
+  #hero {
+    min-height: auto;
+    padding: 96px 0 56px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .hero-tag {
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.45;
+    align-items: flex-start;
+  }
+
+  .hero-hl {
+    font-size: clamp(2.35rem, 15vw, 3.65rem);
+    line-height: .95;
+    max-width: 100%;
+  }
+
+  .hero-sub {
+    font-size: .95rem;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .75rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-stat {
+    min-width: 0;
+    padding: .75rem .65rem;
+  }
+
+  .hero-stat:nth-child(2) {
+    border-right: none;
+  }
+
+  .hero-stat:nth-child(1),
+  .hero-stat:nth-child(2) {
+    border-bottom: 1px solid var(--bd);
+  }
+
+  .hero-stat-val,
+  .hero-stat-lbl {
+    overflow-wrap: anywhere;
+  }
+
+  .hero-dash {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-dash > div {
+    padding: 0 !important;
+  }
+
+  .dash-card {
+    max-width: 100%;
+  }
+
+  .dash-hdr {
+    gap: .75rem;
+    align-items: flex-start;
+  }
+
+  .dash-title,
+  .dash-live {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .dash-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-pill {
+    position: static;
+    width: 100%;
+    margin-top: .75rem;
+    white-space: normal;
+  }
+
+  .dp-1,
+  .dp-2 {
+    animation: none;
+  }
+
+  .dp-main,
+  .dp-sub {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .marquee-wrap {
+    mask-image: none;
+  }
+
+  .m-item {
+    padding: 1rem 1.25rem;
+  }
+
+  .m-label {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .bento,
+  .proj-grid,
+  .process-grid,
+  .why-grid,
+  .cta-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .b-ai,
+  .b-iot,
+  .b-emb,
+  .b-e2e {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .b-e2e {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .b-badge-strip {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .proj-top {
+    flex-direction: column;
+  }
+
+  .proj-metric-big {
+    text-align: left;
+  }
+
+  .proc-panel {
+    position: relative;
+    top: auto;
+    padding: 1.25rem;
+  }
+
+  .pv-row {
+    flex-wrap: wrap;
+  }
+
+  .pv-bar-outer {
+    flex-basis: 100%;
+    order: 4;
+  }
+
+  .hero-ghost-word,
+  .ghost-num {
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 420px) {
+  .wrap {
+    width: min(100% - 1rem, 1200px);
+  }
+
+  #hero {
+    padding-top: 88px;
+  }
+
+  .hero-hl {
+    font-size: clamp(2.1rem, 16vw, 3rem);
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stat {
+    border-right: none !important;
+    border-bottom: 1px solid var(--bd);
+  }
+
+  .hero-stat:last-child {
+    border-bottom: none;
+  }
+
+  .btn {
+    padding: .75rem 1rem;
+    font-size: .95rem;
+  }
+
+  .dash-hdr,
+  .dash-body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 @media(max-width:768px) {
