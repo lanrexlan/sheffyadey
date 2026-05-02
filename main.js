@@ -4,7 +4,7 @@ if (nav) {
 }
 
 const mobileMenuButton = document.querySelector('.hamburger');
-const primaryNav = document.getElementById('primary-nav');
+const primaryNav = document.getElementById('primary-nav') || document.querySelector('.nav-links');
 
 function closeMenu() {
   if (!mobileMenuButton || !primaryNav) return;
@@ -90,3 +90,132 @@ if (heroOrbs.length) {
   toggleOrbMotion();
   reducedMotionQuery.addEventListener('change', toggleOrbMotion);
 }
+
+function setRepresentativeBackground(selector, image, strength) {
+  const el = document.querySelector(selector);
+  if (!el) return;
+  el.classList.add('bg-photo-section', strength);
+  el.style.setProperty('--section-bg-image', `url('${image}')`);
+}
+
+function proofFigure({ src, alt, width, height, caption, extraClass = '' }) {
+  const figure = document.createElement('figure');
+  figure.className = `proof-image ${extraClass}`.trim();
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = alt;
+  img.width = width;
+  img.height = height;
+  img.loading = 'lazy';
+  img.decoding = 'async';
+
+  const figcaption = document.createElement('figcaption');
+  figcaption.className = 'proof-caption';
+  figcaption.textContent = caption;
+
+  figure.append(img, figcaption);
+  return figure;
+}
+
+function replaceCaseVisuals(title, visuals) {
+  const cases = [...document.querySelectorAll('.case-study')];
+  const target = cases.find((item) => item.textContent.includes(title));
+  const visualWrap = target?.querySelector('.cs-visuals');
+  if (!visualWrap || visualWrap.dataset.representativeVisuals === 'true') return;
+  visualWrap.dataset.representativeVisuals = 'true';
+  visualWrap.classList.add('cs-visuals-balanced');
+  visualWrap.replaceChildren(
+    ...visuals.map((visual) => proofFigure({ ...visual, extraClass: 'cs-visual-slot' }))
+  );
+}
+
+function appendRoleProof(name, visual) {
+  const cards = [...document.querySelectorAll('.tm-card')];
+  const target = cards.find((card) => card.textContent.includes(name));
+  const body = target?.querySelector('.tm-card-body');
+  if (!body || body.querySelector('.role-proof')) return;
+  body.appendChild(proofFigure({ ...visual, extraClass: 'role-proof' }));
+}
+
+function enhanceRepresentativeVisuals() {
+  const path = window.location.pathname.toLowerCase();
+
+  if (path.endsWith('/services.html')) {
+    setRepresentativeBackground('.page-hero', '/Images/bg_services_circuit.webp', 'bg-photo-soft');
+  }
+
+  if (path.endsWith('/about.html')) {
+    setRepresentativeBackground('section.section', '/Images/bg_about_engineering.webp', 'bg-photo-soft');
+  }
+
+  if (path.endsWith('/contact.html')) {
+    setRepresentativeBackground('#cta', '/Images/bg_contact_deployment.webp', 'bg-photo-strong');
+  }
+
+  if (path.endsWith('/work.html')) {
+    replaceCaseVisuals('Air Quality Intelligence Network', [
+      {
+        src: '/Images/case_air_quality_monitor.webp',
+        alt: 'Air quality monitoring device showing pollutant readings',
+        width: 680,
+        height: 454,
+        caption: 'Representative sensor and monitoring context',
+      },
+      {
+        src: '/Images/case_air_quality_secondary.webp',
+        alt: 'Air quality monitor displaying indoor environmental readings',
+        width: 640,
+        height: 427,
+        caption: 'Representative sensor and monitoring context',
+      },
+    ]);
+
+    replaceCaseVisuals('Equipment Health Monitoring System', [
+      {
+        src: '/Images/case_equipment_monitoring.webp',
+        alt: 'Industrial machinery with gauges and filters representing equipment monitoring',
+        width: 680,
+        height: 453,
+        caption: 'Representative industrial monitoring environment',
+      },
+    ]);
+
+    replaceCaseVisuals('Cold Chain Integrity Tracker', [
+      {
+        src: '/Images/case_cold_chain_trucks.webp',
+        alt: 'Refrigerated trucks representing cold-chain logistics',
+        width: 680,
+        height: 453,
+        caption: 'Representative logistics environment',
+      },
+      {
+        src: '/Images/case_cold_chain_warehouse.webp',
+        alt: 'Truck at warehouse loading area representing logistics operations',
+        width: 500,
+        height: 750,
+        caption: 'Representative logistics environment',
+      },
+    ]);
+  }
+
+  if (path.endsWith('/team.html')) {
+    appendRoleProof('Abiola Opeyemi', {
+      src: '/Images/role_solar_energy.webp',
+      alt: 'Person working on a solar panel representing energy systems engineering',
+      width: 440,
+      height: 293,
+      caption: 'Representative deployment environment',
+    });
+
+    appendRoleProof('Ibrahim AbdulHakeem', {
+      src: '/Images/role_hvac_building_systems.webp',
+      alt: 'Air conditioning units mounted on a building representing HVAC systems',
+      width: 440,
+      height: 293,
+      caption: 'Representative deployment environment',
+    });
+  }
+}
+
+enhanceRepresentativeVisuals();
