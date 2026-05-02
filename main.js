@@ -3,17 +3,52 @@ if (nav) {
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
 }
 
-function toggleMenu() {
-  const links = document.querySelector('.nav-links');
-  const cta = document.querySelector('.nav-cta');
-  if (!links) return;
-  const open = links.style.display === 'flex';
-  links.style.cssText = open
-    ? ''
-    : 'display:flex;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:rgba(6,13,20,.97);backdrop-filter:blur(24px);padding:1.35rem 2rem;gap:1rem;box-shadow:0 8px 40px rgba(0,0,0,.5);z-index:199;border-bottom:1px solid rgba(255,255,255,.07)';
-  if (cta) cta.style.display = open ? '' : 'none';
+const mobileMenuButton = document.querySelector('.hamburger');
+const primaryNav = document.getElementById('primary-nav');
+
+function closeMenu() {
+  if (!mobileMenuButton || !primaryNav) return;
+  mobileMenuButton.setAttribute('aria-expanded', 'false');
+  mobileMenuButton.setAttribute('aria-label', 'Open navigation menu');
+  document.body.classList.remove('menu-open');
+}
+
+function openMenu() {
+  if (!mobileMenuButton || !primaryNav) return;
+  mobileMenuButton.setAttribute('aria-expanded', 'true');
+  mobileMenuButton.setAttribute('aria-label', 'Close navigation menu');
+  document.body.classList.add('menu-open');
+}
+
+function toggleMenu(forceOpen) {
+  if (!mobileMenuButton || !primaryNav) return;
+  const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+  const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !expanded;
+  if (shouldOpen) openMenu();
+  else closeMenu();
 }
 window.toggleMenu = toggleMenu;
+
+if (mobileMenuButton && primaryNav) {
+  primaryNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => closeMenu());
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+
+  const desktopQuery = window.matchMedia('(min-width: 769px)');
+  const handleDesktopSwitch = (event) => {
+    if (event.matches) closeMenu();
+  };
+
+  if (desktopQuery.addEventListener) {
+    desktopQuery.addEventListener('change', handleDesktopSwitch);
+  } else {
+    desktopQuery.addListener(handleDesktopSwitch);
+  }
+}
 
 const io = new IntersectionObserver(
   (entries) => {
