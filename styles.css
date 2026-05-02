@@ -102,8 +102,10 @@ nav.scrolled{background:rgba(6,13,20,.93);backdrop-filter:blur(24px) saturate(18
 .nav-links a:hover{color:var(--tx)}
 .nav-links a:hover::after{transform:scaleX(1)}
 .nav-cta{margin-left:.5rem}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:transparent;border:0;color:inherit}
 .hamburger span{display:block;width:22px;height:1.5px;background:var(--tx);border-radius:2px;transition:.3s}
+
+.nav-links a:focus-visible,.hamburger:focus-visible,.btn:focus-visible{outline:2px solid var(--cy);outline-offset:3px}
 
 /* ════════════════════════════════════════════════════════
    HERO
@@ -351,6 +353,11 @@ footer{background:#030b11;padding:52px 0 26px;border-top:1px solid var(--bd)}
   .proj-grid{grid-template-columns:1fr}
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
+  .nav-links#primary-nav{position:fixed;top:62px;left:0;right:0;background:rgba(6,13,20,.97);backdrop-filter:blur(24px);padding:1.35rem 2rem;gap:1rem;box-shadow:0 8px 40px rgba(0,0,0,.5);z-index:199;border-bottom:1px solid rgba(255,255,255,.07);flex-direction:column}
+  .hamburger[aria-expanded="true"] + .nav-links#primary-nav,
+  body.menu-open .nav-links#primary-nav{display:flex}
+  body.menu-open{overflow:hidden}
+  body.menu-open .nav-cta{display:none}
   .footer-top{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
   .compare-row{grid-template-columns:1fr}
