@@ -1,0 +1,10 @@
+{
+  "name": "Sheffy Adey",
+  "short_name": "Sheffy Adey",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050b14",
+  "theme_color": "#00d4f2",
+  "description": "AI and IoT product development lab for real-world deployment.",
+  "icons": []
+}
