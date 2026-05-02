@@ -403,3 +403,26 @@ textarea{min-height:130px;resize:vertical}
 .list-clean li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cy);position:absolute;left:0;top:.55rem}
 @media(max-width:1024px){.page-intro,.contact-grid,.content-grid{grid-template-columns:1fr}}
 @media(max-width:768px){.page-hero{padding:132px 0 70px}.page-title{font-size:clamp(2.35rem,12vw,3.4rem)}}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .hero-orb,
+  .dash-card,
+  .marquee-track,
+  .scanline,
+  .avatar-pulse,
+  .avatar-pulse-2 {
+    animation: none !important;
+  }
+}
