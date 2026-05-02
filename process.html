@@ -3,201 +3,878 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Process — Sheffy Adey</title>
+<title>Method — Sheffy Adey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+
+<style>
+/* ════════════════════════════════════════════════
+   PROCESS PAGE — ADDITIONAL STYLES
+════════════════════════════════════════════════ */
+
+/* ── Phase cards — full-width accordion-style blocks ── */
+.phase-list { display: flex; flex-direction: column; gap: 1.5rem }
+
+.phase-card {
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: var(--t);
+}
+.phase-card:hover { border-color: var(--cy-bd) }
+
+/* Phase header bar */
+.phase-hdr {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(135deg, rgba(0,212,242,.04) 0%, transparent 60%);
+  border-bottom: 1px solid var(--bd);
+}
+.phase-letter {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--cy), var(--teal-dk));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-dis); font-weight: 800; font-size: 1.5rem;
+  color: #fff; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0,212,242,.25);
+}
+.phase-meta { min-width: 0 }
+.phase-name {
+  font-family: var(--f-dis); font-weight: 800; font-size: 1.5rem;
+  letter-spacing: .01em; text-transform: uppercase;
+  color: var(--tx); line-height: 1; margin-bottom: .28rem;
+}
+.phase-purpose {
+  font-size: .875rem; color: var(--tx-2); line-height: 1.6;
+  max-width: 72ch;
+}
+.phase-badge {
+  font-family: var(--f-mono); font-size: .6rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--cy); background: var(--cy-dim);
+  border: 1px solid var(--cy-bd);
+  padding: .22rem .65rem; border-radius: var(--r-pill);
+  white-space: nowrap; align-self: flex-start;
+}
+
+/* Phase body — 3-col grid */
+.phase-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+.phase-col {
+  padding: 1.5rem 1.75rem;
+  border-right: 1px solid var(--bd);
+}
+.phase-col:last-child { border-right: none }
+
+.phase-col-title {
+  font-family: var(--f-mono); font-size: .62rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cy); margin-bottom: .85rem;
+  display: flex; align-items: center; gap: .45rem;
+}
+.phase-col-title svg { flex-shrink: 0 }
+
+.phase-list-items {
+  display: flex; flex-direction: column; gap: .55rem;
+  list-style: none;
+}
+.phase-list-items li {
+  font-size: .84rem; color: var(--tx-2); line-height: 1.55;
+  display: flex; align-items: flex-start; gap: .6rem;
+}
+.phase-list-items li::before {
+  content: '';
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--cy); flex-shrink: 0; margin-top: .45em;
+}
+
+/* Output chips */
+.output-chips {
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.output-chip {
+  background: var(--bg-lift);
+  border: 1px solid var(--bd);
+  border-radius: var(--r-sm);
+  padding: .5rem .75rem;
+  font-family: var(--f-mono); font-size: .68rem;
+  color: var(--tx-2); letter-spacing: .03em;
+  display: flex; align-items: center; gap: .55rem;
+  transition: var(--t);
+}
+.output-chip:hover { border-color: var(--cy-bd); color: var(--tx) }
+.output-chip-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cy); flex-shrink: 0;
+}
+
+/* ── Timeline connector bar ── */
+.phase-connector {
+  display: flex; align-items: center; justify-content: center;
+  height: 2rem; position: relative;
+}
+.phase-connector::before {
+  content: '';
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(0,212,242,.3), rgba(0,212,242,.1));
+}
+.phase-connector-arrow {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--bg-lift); border: 1px solid var(--cy-bd);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1; flex-shrink: 0;
+}
+
+/* ── Timeline sidebar (desktop overview) ── */
+.process-overview {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+.timeline-sidebar {
+  position: sticky; top: 5.5rem;
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: var(--r);
+  padding: 1.5rem;
+}
+.tl-title {
+  font-family: var(--f-mono); font-size: .65rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--tx-2); margin-bottom: 1.25rem;
+}
+.tl-item {
+  display: flex; align-items: center; gap: .85rem;
+  padding: .7rem .85rem; border-radius: 9px;
+  border: 1px solid transparent;
+  transition: var(--t); margin-bottom: .35rem;
+  text-decoration: none;
+}
+.tl-item:hover { border-color: var(--cy-bd); background: rgba(0,212,242,.04) }
+.tl-num {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--cy-dim); border: 1px solid var(--cy-bd);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-dis); font-weight: 800; font-size: .9rem;
+  color: var(--cy); flex-shrink: 0;
+}
+.tl-label {
+  font-family: var(--f-dis); font-weight: 700; font-size: .9rem;
+  letter-spacing: .03em; text-transform: uppercase; color: var(--tx);
+}
+.tl-weeks {
+  font-family: var(--f-mono); font-size: .6rem;
+  color: var(--tx-3); letter-spacing: .06em;
+}
+
+/* ── Governance grid ── */
+.gov-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+.gov-card {
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  transition: var(--t);
+  position: relative; overflow: hidden;
+}
+.gov-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,212,242,.04), transparent 55%);
+  opacity: 0; transition: opacity .3s; pointer-events: none;
+}
+.gov-card:hover { transform: translateY(-4px); border-color: var(--cy-bd) }
+.gov-card:hover::before { opacity: 1 }
+.gov-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--cy-dim); border: 1px solid var(--cy-bd);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; margin-bottom: 1rem;
+}
+.gov-title {
+  font-family: var(--f-dis); font-weight: 700; font-size: .95rem;
+  letter-spacing: .03em; text-transform: uppercase;
+  color: var(--tx); margin-bottom: .45rem;
+}
+.gov-desc {
+  font-size: .84rem; color: var(--tx-2); line-height: 1.65;
+}
+
+/* ── Metrics bar ── */
+.metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.metric-item {
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: var(--r);
+  padding: 1.35rem 1.25rem;
+  text-align: center;
+}
+.metric-val {
+  font-family: var(--f-dis); font-weight: 800; font-size: 2rem;
+  color: var(--cy); line-height: 1; display: block;
+}
+.metric-lbl {
+  font-family: var(--f-mono); font-size: .62rem; color: var(--tx-3);
+  letter-spacing: .07em; text-transform: uppercase; margin-top: .22rem;
+  display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .process-overview { grid-template-columns: 1fr }
+  .timeline-sidebar { position: static; display: none }
+}
+@media (max-width: 768px) {
+  .phase-body { grid-template-columns: 1fr }
+  .phase-col { border-right: none; border-bottom: 1px solid var(--bd) }
+  .phase-col:last-child { border-bottom: none }
+  .phase-hdr { grid-template-columns: auto 1fr }
+  .phase-badge { display: none }
+  .gov-grid { grid-template-columns: 1fr }
+  .metrics-bar { grid-template-columns: repeat(2,1fr) }
+}
+@media (max-width: 480px) {
+  .metrics-bar { grid-template-columns: 1fr }
+}
+</style>
 </head>
 <body>
+
+<!-- ══ NAV ═══════════════════════════════════════════════════════ -->
 <nav id="navbar">
-<div class="wrap nav-inner">
-<a href="index.html" class="nav-logo">
-<svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark">
-<rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
-<rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
-<circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
-<circle cx="15" cy="15" r="6.5" stroke="rgba(0,212,242,0.18)" stroke-width="1"/>
-<line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-</svg>
-<span class="nav-brand">Sheffy Adey</span>
-</a>
-<div class="nav-links" id="primary-nav">
-<a href="services.html">Services</a>
-<a href="work.html">Work</a>
-<a href="process.html">Method</a>
-<a href="about.html">Why Us</a>
-<a href="team.html">Team</a>
-<a href="faq.html">Knowledge Hub</a>
-</div>
-<a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
-<button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primary-nav" aria-expanded="false" onclick="toggleMenu()">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
-</button>
-</div>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark">
+        <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
+        <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
+        <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
+        <circle cx="15" cy="15" r="6.5" stroke="rgba(0,212,242,0.18)" stroke-width="1"/>
+        <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+        <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+      </svg>
+      <span class="nav-brand">Sheffy Adey</span>
+    </a>
+    <div class="nav-links" id="primary-nav">
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="process.html">Method</a>
+      <a href="about.html">Why Us</a>
+      <a href="team.html">Team</a>
+      <a href="faq.html">Knowledge Hub</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
+    <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primary-nav" aria-expanded="false" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- ══ PAGE HERO ══════════════════════════════════════════════════ -->
 <section class="page-hero">
-<div class="hero-grid">
-</div>
-<div class="noise">
-</div>
-<div class="wrap">
-<div class="hero-tag">
-<div class="hero-tag-dot">
-</div>The ADEPT Product Loop</div>
-<h1 class="t-display page-title">A structured operating method for AI + IoT delivery.</h1>
-<p class="page-sub">We run engagements as disciplined, evidence-driven loops that move from alignment to transfer with clear outputs at each step.</p>
-</div>
+  <div class="hero-grid"></div>
+  <div class="noise"></div>
+  <div class="wrap page-intro">
+    <div>
+      <div class="hero-tag"><div class="hero-tag-dot"></div>The ADEPT Product Loop</div>
+      <h1 class="t-display page-title">A structured method for AI + IoT delivery.</h1>
+      <p class="page-sub">We run engagements as disciplined, evidence-driven loops grounded in Double Diamond, Google Design Sprint, and Scrum — adapted for the specific demands of connected product development. Each phase produces concrete outputs, not slide decks.</p>
+    </div>
+    <div class="page-stat-panel">
+      <div class="page-stat">
+        <span class="page-stat-key">Sprint duration</span>
+        <span class="page-stat-val">4–6 Weeks</span>
+      </div>
+      <div class="page-stat">
+        <span class="page-stat-key">Phases</span>
+        <span class="page-stat-val">5 — A D E P T</span>
+      </div>
+      <div class="page-stat">
+        <span class="page-stat-key">Governance</span>
+        <span class="page-stat-val">Integrated, not optional</span>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ══ ADEPT PHASES ═══════════════════════════════════════════════ -->
 <section class="section">
-<div class="wrap">
-<div class="timeline">
-<div class="step">
-<div class="step-num-col">
-<div class="step-num">A</div>
-</div>
-<div class="step-body">
-<div class="step-name">Align</div>
-<p class="step-desc">Define user outcomes, deployment realities, integration points, and success criteria.</p>
-</div>
-</div>
-<div class="step">
-<div class="step-num-col">
-<div class="step-num">D</div>
-</div>
-<div class="step-body">
-<div class="step-name">Design</div>
-<p class="step-desc">Prototype architecture choices and de-risk high-impact decisions early.</p>
-</div>
-</div>
-<div class="step">
-<div class="step-num-col">
-<div class="step-num">E</div>
-</div>
-<div class="step-body">
-<div class="step-name">Engineer</div>
-<p class="step-desc">Build firmware, cloud, data pipelines, and model behavior as one system.</p>
-</div>
-</div>
-<div class="step">
-<div class="step-num-col">
-<div class="step-num">P</div>
-</div>
-<div class="step-body">
-<div class="step-name">Pilot</div>
-<p class="step-desc">Deploy controlled fleets, observe real performance, and tune from field evidence.</p>
-</div>
-</div>
-<div class="step">
-<div class="step-num-col">
-<div class="step-num">T</div>
-</div>
-<div class="step-body">
-<div class="step-name">Transfer</div>
-<p class="step-desc">Deliver handover assets, training, and governance artefacts to client teams.</p>
-</div>
-</div>
-</div>
-</div>
+  <div class="ghost-num" style="top:-4rem;right:-1rem">ADEPT</div>
+  <div class="wrap" style="position:relative;z-index:1">
+
+    <div class="reveal" style="margin-bottom:3rem">
+      <div class="eyebrow"><span class="eyebrow-dot pulse"></span>Delivery Framework</div>
+      <h2 class="t-heading sec-hl">Five phases. Clear outputs<br/>at every stage.</h2>
+      <p class="sec-sub">Every engagement begins with alignment on deployment context and ends with a client team that can operate the system independently. The phases below define what happens in between — and what gets produced at each step.</p>
+    </div>
+
+    <div class="process-overview">
+
+      <!-- Sticky sidebar nav -->
+      <aside class="timeline-sidebar" aria-label="Phase navigation">
+        <div class="tl-title">Phase overview</div>
+        <a href="#phase-align" class="tl-item">
+          <div class="tl-num">A</div>
+          <div>
+            <div class="tl-label">Align</div>
+            <div class="tl-weeks">Week 1</div>
+          </div>
+        </a>
+        <a href="#phase-design" class="tl-item">
+          <div class="tl-num">D</div>
+          <div>
+            <div class="tl-label">Design</div>
+            <div class="tl-weeks">Wk 1–2</div>
+          </div>
+        </a>
+        <a href="#phase-engineer" class="tl-item">
+          <div class="tl-num">E</div>
+          <div>
+            <div class="tl-label">Engineer</div>
+            <div class="tl-weeks">Wk 2–5</div>
+          </div>
+        </a>
+        <a href="#phase-pilot" class="tl-item">
+          <div class="tl-num">P</div>
+          <div>
+            <div class="tl-label">Pilot</div>
+            <div class="tl-weeks">Wk 5–6</div>
+          </div>
+        </a>
+        <a href="#phase-transfer" class="tl-item">
+          <div class="tl-num">T</div>
+          <div>
+            <div class="tl-label">Transfer</div>
+            <div class="tl-weeks">Week 6</div>
+          </div>
+        </a>
+      </aside>
+
+      <!-- Phase cards -->
+      <div class="phase-list">
+
+        <!-- ══ A — ALIGN ══ -->
+        <div id="phase-align" class="phase-card reveal">
+          <div class="phase-hdr">
+            <div class="phase-letter">A</div>
+            <div class="phase-meta">
+              <div class="phase-name">Align</div>
+              <p class="phase-purpose">Define the operating environment, user need, system boundaries, and success metrics before any build decisions are made. No assumption is carried forward unchecked.</p>
+            </div>
+            <div class="phase-badge">Week 1</div>
+          </div>
+          <div class="phase-body">
+            <!-- Col 1: Key questions -->
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg>
+                Key questions
+              </div>
+              <ul class="phase-list-items">
+                <li>What problem must the system solve, and for whom?</li>
+                <li>What field conditions — power, connectivity, environment — could break it?</li>
+                <li>What does measurable success look like after deployment?</li>
+                <li>What compliance, data privacy, or security obligations apply?</li>
+                <li>Who is responsible for the system once it leaves our hands?</li>
+              </ul>
+            </div>
+            <!-- Col 2: Activities -->
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3v10"/></svg>
+                Activities
+              </div>
+              <ul class="phase-list-items">
+                <li>Stakeholder interviews and field context workshops</li>
+                <li>Deployment environment audit — power, connectivity, climate</li>
+                <li>Integration and interoperability mapping</li>
+                <li>Constraint surfacing: budget, regulatory, hardware, timeline</li>
+                <li>Risk register initialisation and scoring</li>
+              </ul>
+            </div>
+            <!-- Col 3: Outputs -->
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h8v12H4zM7 6h2M7 9h2"/></svg>
+                Outputs
+              </div>
+              <div class="output-chips">
+                <div class="output-chip"><div class="output-chip-dot"></div>Requirements brief</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Constraints map</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Success metrics definition</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Initial risk register</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Stakeholder sign-off record</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="phase-connector" aria-hidden="true">
+          <div class="phase-connector-arrow">
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#00d4f2" stroke-width="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+          </div>
+        </div>
+
+        <!-- ══ D — DESIGN ══ -->
+        <div id="phase-design" class="phase-card reveal d1">
+          <div class="phase-hdr">
+            <div class="phase-letter">D</div>
+            <div class="phase-meta">
+              <div class="phase-name">Design</div>
+              <p class="phase-purpose">Convert assumptions into testable architecture. High-risk decisions are stress-tested against real hardware, real data, and realistic field conditions — before engineering investment is committed.</p>
+            </div>
+            <div class="phase-badge">Wk 1–2</div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg>
+                Key questions
+              </div>
+              <ul class="phase-list-items">
+                <li>Which sensor and connectivity options fit the power budget?</li>
+                <li>How does data flow from device to dashboard to decision?</li>
+                <li>What inference approach is feasible on target hardware?</li>
+                <li>What failure modes need to be designed against now?</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3v10"/></svg>
+                Activities
+              </div>
+              <ul class="phase-list-items">
+                <li>Sensor and connectivity option evaluation</li>
+                <li>Data flow and telemetry pathway design</li>
+                <li>Power budget modelling and trade-off analysis</li>
+                <li>Model and inference approach selection</li>
+                <li>Rapid prototype and feasibility validation</li>
+                <li>Bill-of-materials assumption review</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h8v12H4zM7 6h2M7 9h2"/></svg>
+                Outputs
+              </div>
+              <div class="output-chips">
+                <div class="output-chip"><div class="output-chip-dot"></div>System architecture document</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Prototype plan</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Bill-of-material assumptions</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Validation plan</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Updated risk register</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-connector" aria-hidden="true">
+          <div class="phase-connector-arrow">
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#00d4f2" stroke-width="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+          </div>
+        </div>
+
+        <!-- ══ E — ENGINEER ══ -->
+        <div id="phase-engineer" class="phase-card reveal d2">
+          <div class="phase-hdr">
+            <div class="phase-letter">E</div>
+            <div class="phase-meta">
+              <div class="phase-name">Engineer</div>
+              <p class="phase-purpose">Build the device, firmware, telemetry pipeline, intelligence layer, and observability dashboard. Security provisions and governance controls are integrated from the first sprint — not retrofitted at delivery.</p>
+            </div>
+            <div class="phase-badge">Wk 2–5</div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg>
+                Risk controls
+              </div>
+              <ul class="phase-list-items">
+                <li>Security baseline provisions integrated from sprint one</li>
+                <li>Weekly delivery demos against sprint goals</li>
+                <li>Continuous integration and automated tests where applicable</li>
+                <li>Risk register reviewed at each sprint retrospective</li>
+                <li>Change control log maintained throughout build</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3v10"/></svg>
+                Activities
+              </div>
+              <ul class="phase-list-items">
+                <li>Firmware development and hardware integration</li>
+                <li>Telemetry protocol and cloud pipeline implementation</li>
+                <li>Edge AI model training, compression, and on-device deployment</li>
+                <li>Observability dashboard and alerting setup</li>
+                <li>Security baseline checklist completion</li>
+                <li>Technical documentation written in parallel with code</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h8v12H4zM7 6h2M7 9h2"/></svg>
+                Outputs
+              </div>
+              <div class="output-chips">
+                <div class="output-chip"><div class="output-chip-dot"></div>Working prototype device</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Firmware source + build docs</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Telemetry pipeline + dashboard</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Technical architecture record</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Security checklist (completed)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-connector" aria-hidden="true">
+          <div class="phase-connector-arrow">
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#00d4f2" stroke-width="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+          </div>
+        </div>
+
+        <!-- ══ P — PILOT ══ -->
+        <div id="phase-pilot" class="phase-card reveal d3">
+          <div class="phase-hdr">
+            <div class="phase-letter">P</div>
+            <div class="phase-meta">
+              <div class="phase-name">Pilot</div>
+              <p class="phase-purpose">Deploy the system under realistic field conditions and measure performance against the success criteria defined in Align. The pilot is a rigorous field experiment — not a demo.</p>
+            </div>
+            <div class="phase-badge">Wk 5–6</div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg>
+                Key questions
+              </div>
+              <ul class="phase-list-items">
+                <li>Does the system meet the success criteria defined in Align?</li>
+                <li>What failure modes appeared under real field conditions?</li>
+                <li>How did model performance compare to validation benchmarks?</li>
+                <li>What operational burden does the system place on end users?</li>
+                <li>What must be resolved before scale or full deployment?</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3v10"/></svg>
+                Activities
+              </div>
+              <ul class="phase-list-items">
+                <li>Controlled field deployment with defined scope</li>
+                <li>Continuous uptime and data quality monitoring</li>
+                <li>Model and inference performance review</li>
+                <li>User and operator feedback collection</li>
+                <li>Security posture check under operating conditions</li>
+                <li>Issue triage and improvement backlog creation</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h8v12H4zM7 6h2M7 9h2"/></svg>
+                Outputs
+              </div>
+              <div class="output-chips">
+                <div class="output-chip"><div class="output-chip-dot"></div>Pilot report</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Issue log (prioritised)</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Performance metrics summary</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Model behaviour assessment</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Improvement and scale backlog</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-connector" aria-hidden="true">
+          <div class="phase-connector-arrow">
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#00d4f2" stroke-width="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+          </div>
+        </div>
+
+        <!-- ══ T — TRANSFER ══ -->
+        <div id="phase-transfer" class="phase-card reveal d4">
+          <div class="phase-hdr">
+            <div class="phase-letter">T</div>
+            <div class="phase-meta">
+              <div class="phase-name">Transfer</div>
+              <p class="phase-purpose">Ensure the client team can operate, maintain, and extend the system without ongoing dependency on Sheffy Adey. Operational independence is a design goal from the first session — not a closing formality.</p>
+            </div>
+            <div class="phase-badge">Week 6</div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg>
+                Acceptance criteria
+              </div>
+              <ul class="phase-list-items">
+                <li>Client team can execute routine operations without assistance</li>
+                <li>Incident response procedure is documented and understood</li>
+                <li>Model drift monitoring is in place with alert thresholds set</li>
+                <li>Governance documentation is complete and version-controlled</li>
+                <li>Next-phase roadmap agreed and scope-ready</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3v10"/></svg>
+                Activities
+              </div>
+              <ul class="phase-list-items">
+                <li>Structured handover sessions with internal team</li>
+                <li>Operational runbook walkthroughs and review</li>
+                <li>Maintenance, update, and OTA guidance delivery</li>
+                <li>Governance pack review and sign-off</li>
+                <li>Scale and next-phase roadmap planning</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <div class="phase-col-title">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h8v12H4zM7 6h2M7 9h2"/></svg>
+                Outputs
+              </div>
+              <div class="output-chips">
+                <div class="output-chip"><div class="output-chip-dot"></div>Handover pack</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Operational runbook</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Maintenance and update guide</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Training materials</div>
+                <div class="output-chip"><div class="output-chip-dot"></div>Next-phase roadmap</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /phase-list -->
+    </div><!-- /process-overview -->
+
+    <!-- Key metrics bar -->
+    <div class="metrics-bar reveal" style="margin-top:3.5rem">
+      <div class="metric-item">
+        <span class="metric-val">5</span>
+        <span class="metric-lbl">Structured phases</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-val">25+</span>
+        <span class="metric-lbl">Named deliverables</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-val">4–6</span>
+        <span class="metric-lbl">Week sprint window</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-val">100%</span>
+        <span class="metric-lbl">Capability transfer target</span>
+      </div>
+    </div>
+
+  </div>
 </section>
-<section class="section" style="background:var(--bg-lift)">
-<div class="wrap content-grid">
-<article class="info-card">
-<h3>Timeline and collaboration</h3>
-<p>Typical engagements run 4–6 weeks. Weekly demos, shared sprint boards, and operational checkpoints keep stakeholders aligned without slowing delivery.</p>
-</article>
-<article class="info-card">
-<h3>Trust and delivery principles</h3>
-<ul class="list-clean">
-<li>Security-by-design and responsible AI controls.</li>
-<li>Transparent progress with measurable sprint outputs.</li>
-<li>Documentation and runbooks treated as first-class deliverables.</li>
-</ul>
-</article>
-</div>
+
+<!-- ══ GOVERNANCE BUILT IN ════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg-lift);position:relative;overflow:hidden">
+  <div class="ghost-num" style="top:-3rem;left:-1rem">Gov</div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="reveal" style="margin-bottom:3rem">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Governance Built In</div>
+      <h2 class="t-heading sec-hl">Security, ethics, and accountability<br/>are not optional modules.</h2>
+      <p class="sec-sub">When an AI-enabled system operates in the physical world — controlling equipment, influencing decisions, or processing sensitive data — governance is a safety requirement. We treat it as such from the first design session.</p>
+    </div>
+
+    <div class="gov-grid reveal">
+
+      <div class="gov-card">
+        <div class="gov-icon">🔒</div>
+        <div class="gov-title">Security by design</div>
+        <p class="gov-desc">Device security controls are specified during Align and implemented throughout Engineer. We reference the IoT cybersecurity baseline framework (ETSI EN 303 645 / NISTIR 8259) to structure hardware, firmware, and network posture decisions — not as a post-build audit, but as an embedded engineering discipline.</p>
+      </div>
+
+      <div class="gov-card">
+        <div class="gov-icon">🤖</div>
+        <div class="gov-title">Responsible AI principles</div>
+        <p class="gov-desc">AI risk management is aligned to the NIST AI Risk Management Framework (AI RMF). We document model purpose, known limitations, intended deployment context, and failure modes. Where a model's outputs influence consequential decisions, we define human oversight requirements and monitoring thresholds before deployment.</p>
+      </div>
+
+      <div class="gov-card">
+        <div class="gov-icon">📊</div>
+        <div class="gov-title">Model behaviour monitoring</div>
+        <p class="gov-desc">Production AI systems can degrade over time as sensor conditions, data distributions, or operating environments change. We design drift detection mechanisms into the telemetry pipeline and define alert thresholds during Engineer — so model performance is observable, not assumed.</p>
+      </div>
+
+      <div class="gov-card">
+        <div class="gov-icon">🔐</div>
+        <div class="gov-title">Data privacy and integrity</div>
+        <p class="gov-desc">Data minimisation, collection purpose limitation, and access control are addressed in Align and carried through to implementation. For systems handling personal or sensitive data, we document data flow, retention policy, and access structure as part of the governance pack delivered at Transfer.</p>
+      </div>
+
+      <div class="gov-card">
+        <div class="gov-icon">📄</div>
+        <div class="gov-title">Documentation as a deliverable</div>
+        <p class="gov-desc">Technical documentation, operational runbooks, and architecture records are written in parallel with development — not assembled at the end. At Transfer, the client receives a complete and version-controlled governance pack that covers system design, security controls, model behaviour, and maintenance procedures.</p>
+      </div>
+
+      <div class="gov-card">
+        <div class="gov-icon">🔄</div>
+        <div class="gov-title">Continuous risk management</div>
+        <p class="gov-desc">The risk register is initialised in Align and reviewed at the end of each subsequent phase. New risks identified during Design, Engineer, or Pilot are logged, scored, and assigned a mitigation owner. The register is included in the Transfer handover pack so the client can maintain it independently.</p>
+      </div>
+
+    </div>
+
+    <!-- Standards reference strip -->
+    <div class="info-card reveal" style="margin-top:1.5rem">
+      <h3 style="font-size:1rem;margin-bottom:.75rem">Standards and frameworks referenced</h3>
+      <div class="stack-list">
+        <span class="stack-chip">NIST AI RMF</span>
+        <span class="stack-chip">ETSI EN 303 645</span>
+        <span class="stack-chip">NISTIR 8259</span>
+        <span class="stack-chip">ISO/IEC 27001 principles</span>
+        <span class="stack-chip">OWASP IoT Top 10</span>
+        <span class="stack-chip">GDPR data minimisation</span>
+        <span class="stack-chip">IEEE 7000 (ethics by design)</span>
+      </div>
+      <p style="font-size:.82rem;color:var(--tx-3);margin-top:.85rem;line-height:1.6">Standard applicability is determined per project based on deployment context, data sensitivity, and regulatory environment. The list above represents the frameworks we draw on — not a compliance checklist applied uniformly to every engagement.</p>
+    </div>
+
+  </div>
 </section>
+
+<!-- ══ TIMELINE + COLLABORATION ══════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:2.5rem">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>How We Collaborate</div>
+      <h2 class="t-heading sec-hl">Structured checkpoints.<br/>No black boxes.</h2>
+    </div>
+    <div class="content-grid reveal">
+      <article class="info-card">
+        <h3>Weekly sprint demos</h3>
+        <p>At the end of each sprint week, we demonstrate working outputs — hardware, firmware behaviour, dashboard data, or model performance — against the goals set at the start of the week. Stakeholders see progress in real artefacts, not status updates.</p>
+      </article>
+      <article class="info-card">
+        <h3>Shared sprint board</h3>
+        <p>The delivery backlog, in-progress work, and completed outputs are visible to the client team throughout the engagement. Priorities can be adjusted at sprint boundaries with full visibility of the impact on scope and timeline.</p>
+      </article>
+      <article class="info-card">
+        <h3>Risk register reviews</h3>
+        <p>The risk register is reviewed at each phase boundary. New technical, operational, or compliance risks are logged, scored, and assigned a mitigation path. Nothing is resolved informally or left undocumented.</p>
+      </article>
+      <article class="info-card">
+        <h3>Documented decisions</h3>
+        <p>Architecture decisions, trade-offs, and rejected alternatives are recorded in an Architecture Decision Record (ADR). When a design choice has long-term implications — connectivity protocol, data storage approach, model architecture — the reasoning is preserved for future maintainers.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ════════════════════════════════════════════════════════ -->
 <section id="cta">
-<div class="cta-radial">
-</div>
-<div class="cta-grid">
-</div>
-<div class="cta-inner wrap reveal">
-<h2 class="t-display cta-hl">Need a clear execution path?</h2>
-<p class="cta-sub">We can map your first ADEPT loop in a single discovery call.</p>
-<div class="cta-actions">
-<a href="contact.html" class="btn btn-white">Book a Discovery Call</a>
-</div>
-</div>
+  <div class="cta-radial"></div>
+  <div class="cta-grid"></div>
+  <div class="cta-inner wrap reveal">
+    <div class="cta-tag">
+      <div style="width:5px;height:5px;border-radius:50%;background:var(--cy);animation:blink 2s infinite"></div>
+      Ready to scope
+    </div>
+    <h2 class="t-display cta-hl">Map your first<br/><em>ADEPT loop.</em></h2>
+    <p class="cta-sub">Bring your deployment context and constraints. In a single discovery call, we will identify which phase you need to start from and what the first sprint should produce.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-white">
+        Book a Discovery Call
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="services.html" class="btn btn-ghost-light">Explore Services</a>
+    </div>
+    <p class="cta-note">No obligation · typical response within one business day</p>
+  </div>
 </section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
 <footer>
-<div class="wrap">
-<div class="footer-top">
-<div>
-<div class="footer-brand-wrap">
-<svg width="22" height="22" viewBox="0 0 30 30" fill="none">
-<rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
-<rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
-<circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
-<line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-<line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-</svg>
-<span class="footer-brand">Sheffy Adey</span>
-</div>
-<p class="footer-desc">A product-development lab building AI-enabled IoT systems that are secure, interoperable, and measurable — from concept to deployed fleet.</p>
-</div>
-<div>
-<div class="footer-col-title">Services</div>
-<div class="footer-links">
-<a href="services.html">AI Systems</a>
-<a href="services.html">IoT Product Development</a>
-<a href="services.html">Embedded Intelligence</a>
-<a href="services.html">End-to-End Engineering</a>
-</div>
-</div>
-<div>
-<div class="footer-col-title">Programmes</div>
-<div class="footer-links">
-<a href="process.html">Bootcamps</a>
-<a href="process.html">Sprints</a>
-<a href="process.html">Partnerships</a>
-<a href="process.html">Toolkits</a>
-</div>
-</div>
-<div>
-<div class="footer-col-title">Company</div>
-<div class="footer-links">
-<a href="about.html">About</a>
-<a href="work.html">Case Studies</a>
-<a href="faq.html">Knowledge Hub</a>
-<a href="process.html">Trust &amp; Governance</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</div>
-<div class="footer-rule">
-</div>
-<div class="footer-bottom">
-<div class="footer-copy">© 2025 Sheffy Adey. All rights reserved.</div>
-<div class="footer-legal">
-<a href="#">Privacy &amp; Cookies</a>
-<a href="#">Accessibility</a>
-<a href="#">Terms</a>
-</div>
-<div class="footer-tag">Built with <span>♥</span> Prototype fast. Validate hard. Scale responsibly.</div>
-</div>
-</div>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-wrap">
+          <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+            <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
+            <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
+            <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
+            <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+            <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
+          </svg>
+          <span class="footer-brand">Sheffy Adey</span>
+        </div>
+        <p class="footer-desc">An engineering-led AI + IoT product development lab. We help organisations move from concept to dependable field deployment.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-links">
+          <a href="services.html">AI Systems</a>
+          <a href="services.html">IoT Product Development</a>
+          <a href="services.html">Embedded Intelligence</a>
+          <a href="services.html">End-to-End Engineering</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Programmes</div>
+        <div class="footer-links">
+          <a href="process.html">Bootcamps</a>
+          <a href="process.html">Sprints</a>
+          <a href="process.html">Partnerships</a>
+          <a href="process.html">Toolkits</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="team.html">Team</a>
+          <a href="work.html">Case Studies</a>
+          <a href="faq.html">Knowledge Hub</a>
+          <a href="process.html">Trust &amp; Governance</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Sheffy Adey. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy &amp; Cookies</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="footer-tag">Built with <span>♥</span> Prototype fast. Validate hard. Scale responsibly.</div>
+    </div>
+  </div>
 </footer>
-<script src="main.js">
-</script>
+
+<script src="main.js"></script>
 </body>
 </html>
