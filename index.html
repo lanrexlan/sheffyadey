@@ -1,755 +1,702 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Sheffy Adey is an AI and IoT product development lab helping teams design, build, pilot, and transfer intelligent connected systems for real-world deployment." />
-<link rel="canonical" href="https://www.sheffyadey.com/" />
-<meta property="og:title" content="Sheffy Adey | AI and IoT Product Development for Real-World Deployment" />
-<meta property="og:description" content="Sheffy Adey is an AI and IoT product development lab helping teams design, build, pilot, and transfer intelligent connected systems for real-world deployment." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.sheffyadey.com/" />
-<meta property="og:image" content="https://www.sheffyadey.com/Images/bg_home_lab_device.webp" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Sheffy Adey | AI and IoT Product Development for Real-World Deployment" />
-<meta name="twitter:description" content="Sheffy Adey is an AI and IoT product development lab helping teams design, build, pilot, and transfer intelligent connected systems for real-world deployment." />
-<meta name="twitter:image" content="https://www.sheffyadey.com/Images/bg_home_lab_device.webp" />
-<meta name="twitter:site" content="@sheffyadey" />
-<link rel="manifest" href="/site.webmanifest" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Sheffy Adey","url":"https://www.sheffyadey.com/","logo":"https://www.sheffyadey.com/Images/bg_home_lab_device.webp","description":"Sheffy Adey is an AI and IoT product development lab helping teams design, build, pilot, and transfer intelligent connected systems for real-world deployment.","sameAs":[]}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Sheffy Adey","url":"https://www.sheffyadey.com/"}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sheffy Adey | AI and IoT Product Development for Real-World Deployment</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<meta name="description" content="Sheffy Adey designs and delivers connected AI + IoT products that work beyond the prototype stage. Embedded engineering, intelligent sensing, cloud integration, and governance — one delivery team.">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ══ NAV ═══════════════════════════════════════════════════════ -->
-<nav id="navbar">
+<!-- ======================= NAV ======================= -->
+<header class="nav">
   <div class="wrap nav-inner">
-    <a href="index.html" class="nav-logo">
-      <svg class="logo-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sheffy Adey logo mark">
-        <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
-        <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
-        <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
-        <circle cx="15" cy="15" r="6.5" stroke="rgba(0,212,242,0.18)" stroke-width="1"/>
-        <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-        <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-        <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-        <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-      </svg>
-      <span class="nav-brand">Sheffy Adey</span>
-    </a>
-    <div class="nav-links">
-      <a href="services.html">Services</a>
+    <a href="index.html" class="nav-logo">Sheffy Adey</a>
+    <nav class="nav-links">
+      <a href="#capabilities">Services</a>
       <a href="work.html">Work</a>
-      <a href="process.html">Method</a>
-      <a href="about.html">Why Us</a>
-      <a href="team.html">Team</a>
-      <a href="faq.html">Knowledge Hub</a>
-    </div>
-    <a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
-    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <a href="#method">Method</a>
+      <a href="#why">Why Us</a>
+      <a href="#team">Team</a>
+      <a href="knowledge.html">Knowledge Hub</a>
+      <a href="#cta" class="btn btn-primary">Start a Project</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
-</nav>
+</header>
 
-<!-- ══ HERO ══════════════════════════════════════════════════════ -->
-<section id="hero">
+<!-- ======================= HERO ======================= -->
+<section id="hero" class="bg-photo-section">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
-  <div class="noise"></div>
-  <div class="hero-ghost-word">Lab</div>
+  <div class="hero-orb"></div>
 
-  <div class="wrap">
-    <div class="hero-inner">
-      <div>
-        <!-- ─── HERO TAG ─── -->
-        <div class="hero-tag">
-          <div class="hero-tag-dot"></div>
-          AI + IoT Product Development Lab · Nigeria
-        </div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="hero-tag">
+        <span class="dot"></span>
+        AI + IoT Product Development Lab · Nigeria
+      </span>
 
-        <!-- ─── HERO HEADLINE ─── -->
-        <h1 class="t-display hero-hl">
-          AI + IoT systems<br/><em>engineered for<br/>real deployment.</em>
-        </h1>
+      <h1 class="hero-hl">
+        AI + IoT systems<br>
+        engineered for<br>
+        <span class="hl-accent">real deployment.</span>
+      </h1>
 
-        <!-- ─── HERO SUBHEAD ─── -->
-        <p class="hero-sub">
-          Sheffy Adey designs and delivers connected products that work beyond the prototype stage. We combine embedded engineering, intelligent sensing, cloud integration, and governance into one delivery team — so your system is secure, measurable, and ready for field use.
-        </p>
+      <p class="hero-sub">
+        Sheffy Adey designs and delivers connected products that work beyond the prototype stage.
+        We combine embedded engineering, intelligent sensing, cloud integration, and governance
+        into one delivery team — so your system is secure, measurable, and ready for field use.
+      </p>
 
-        <div class="hero-actions">
-          <a href="contact.html" class="btn btn-primary">
-            Start a Project
-            <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-          <a href="work.html" class="btn btn-ghost">
-            See Our Work
-            <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-
-        <!-- ─── HERO PROOF STRIP ─── -->
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="hero-stat-val">Device</span>
-            <span class="hero-stat-lbl">Architecture</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-val">Firmware</span>
-            <span class="hero-stat-lbl">+ Telemetry</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-val">Edge AI</span>
-            <span class="hero-stat-lbl">+ Cloud</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-val">Transfer</span>
-            <span class="hero-stat-lbl">to Your Team</span>
-          </div>
-        </div>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">Start a Project</a>
+        <a href="work.html" class="btn btn-ghost">See Our Work</a>
       </div>
 
-      <!-- ─── HERO DASHBOARD ─── -->
-      <div class="hero-dash">
-        <div style="position:relative;padding:26px 28px 26px 36px">
-          <div class="dash-pill dp-1">
-            <div class="dp-icon">🔬</div>
-            <div>
-              <div class="dp-main">Sensor-to-Pilot Sprint</div>
-              <div class="dp-sub">4–6 weeks · field-ready</div>
-            </div>
-          </div>
-          <div class="dash-card">
-            <div class="scanline"></div>
-            <div class="dash-hdr">
-              <span class="dash-title">System Status — Reference Pilot</span>
-              <span class="dash-live"><span class="dash-live-dot"></span>DEMO</span>
-            </div>
-            <div class="dash-body">
-              <div class="dash-metrics">
-                <div class="dash-metric"><span class="dm-val">99%+</span><span class="dm-key">Target Uptime</span></div>
-                <div class="dash-metric"><span class="dm-val">&lt;20ms</span><span class="dm-key">Edge Latency</span></div>
-                <div class="dash-metric"><span class="dm-val">24/7</span><span class="dm-key">Monitoring</span></div>
-              </div>
-              <div class="dash-bars">
-                <div>
-                  <div class="dbar-top"><span class="dbar-lbl">Model Accuracy</span><span class="dbar-pct">On-device validated</span></div>
-                  <div class="dbar-track"><div class="dbar-fill" style="width:92%"></div></div>
-                </div>
-                <div>
-                  <div class="dbar-top"><span class="dbar-lbl">Security Posture</span><span class="dbar-pct">Baseline embedded</span></div>
-                  <div class="dbar-track"><div class="dbar-fill" style="width:97%;animation-delay:1.2s"></div></div>
-                </div>
-                <div>
-                  <div class="dbar-top"><span class="dbar-lbl">Governance Coverage</span><span class="dbar-pct">NIST AI RMF aligned</span></div>
-                  <div class="dbar-track"><div class="dbar-fill" style="width:100%;animation-delay:1.5s"></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="dash-pill dp-2">
-            <div class="dp-icon">✅</div>
-            <div>
-              <div class="dp-main">Governance Embedded</div>
-              <div class="dp-sub">AI RMF + IoT Security Baseline</div>
-            </div>
-          </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-val">Device</div>
+          <div class="hero-stat-lbl">Architecture</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">Firmware</div>
+          <div class="hero-stat-lbl">+ Telemetry</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">Edge AI</div>
+          <div class="hero-stat-lbl">+ Cloud</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">Transfer</div>
+          <div class="hero-stat-lbl">to Your Team</div>
         </div>
       </div>
     </div>
+
+    <aside class="hero-dash">
+      <div class="dash-card">
+        <div class="dash-hdr">
+          <div>
+            <div class="dash-eyebrow">🔬 Sensor-to-Pilot Sprint</div>
+            <div class="dash-title">4–6 weeks · field-ready</div>
+          </div>
+          <span class="dash-live">DEMO</span>
+        </div>
+        <div class="dash-body">
+          <div class="dash-strap">System Status — Reference Pilot</div>
+          <div class="dash-metrics">
+            <div class="dash-metric">
+              <div class="dash-metric-val">99%+</div>
+              <div class="dash-metric-lbl">Target Uptime</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-metric-val">&lt;20ms</div>
+              <div class="dash-metric-lbl">Edge Latency</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-metric-val">24/7</div>
+              <div class="dash-metric-lbl">Monitoring</div>
+            </div>
+          </div>
+          <div class="dash-rows">
+            <div class="dash-row">
+              <span>Model Accuracy</span>
+              <span class="dash-row-val">On-device validated</span>
+            </div>
+            <div class="dash-row">
+              <span>Security Posture</span>
+              <span class="dash-row-val">Baseline embedded</span>
+            </div>
+            <div class="dash-row">
+              <span>Governance Coverage</span>
+              <span class="dash-row-val">NIST AI RMF aligned</span>
+            </div>
+          </div>
+        </div>
+        <div class="dash-pill">
+          <div class="dp-1">
+            <div class="dp-main">✅ Governance Embedded</div>
+            <div class="dp-sub">AI RMF + IoT Security Baseline</div>
+          </div>
+        </div>
+      </div>
+    </aside>
   </div>
 </section>
 
-<!-- ══ MARQUEE TRUST STRIP ════════════════════════════════════════ -->
-<div id="trust">
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="m-label">Security Baseline Integrated</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><span class="m-label">Edge AI on Constrained Hardware</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><span class="m-label">Measurable Field Outcomes</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="m-label">Internal Capability Transfer</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83"/></svg></div><span class="m-label">Concept to Pilot in 4–6 Weeks</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12l2 2 4-4"/></svg></div><span class="m-label">NIST AI RMF + ETSI EN 303 645</span></div>
-      <div class="m-sep">·</div>
-      <!-- Duplicate for seamless loop -->
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="m-label">Security Baseline Integrated</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><span class="m-label">Edge AI on Constrained Hardware</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><span class="m-label">Measurable Field Outcomes</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="m-label">Internal Capability Transfer</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83"/></svg></div><span class="m-label">Concept to Pilot in 4–6 Weeks</span></div>
-      <div class="m-sep">·</div>
-      <div class="m-item"><div class="m-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4f2" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12l2 2 4-4"/></svg></div><span class="m-label">NIST AI RMF + ETSI EN 303 645</span></div>
-      <div class="m-sep">·</div>
-    </div>
+<!-- ======================= MARQUEE ======================= -->
+<section class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="m-item"><span class="m-label">Security Baseline Integrated</span></span>
+    <span class="m-item">·</span>
+    <span class="m-item"><span class="m-label">Edge AI on Constrained Hardware</span></span>
+    <span class="m-item">·</span>
+    <span class="m-item"><span class="m-label">Measurable Field Outcomes</span></span>
+    <span class="m-item">·</span>
+    <span class="m-item"><span class="m-label">Internal Capability Transfer</span></span>
+    <span class="m-item">·</span>
+    <span class="m-item"><span class="m-label">Concept to Pilot in 4–6 Weeks</span></span>
+    <span class="m-item">·</span>
+    <span class="m-item"><span class="m-label">NIST AI RMF + ETSI EN 303 645</span></span>
+    <span class="m-item">·</span>
+    <span class="m-item"><span class="m-label">Security Baseline Integrated</span></span>
+    <span class="m-item">·</span>
+    <span class="m-item"><span class="m-label">Edge AI on Constrained Hardware</span></span>
   </div>
-</div>
+</section>
 
-<!-- ══ CAPABILITIES ═══════════════════════════════════════════════ -->
-<section id="capabilities" class="section">
-  <div class="ghost-num">01</div>
-  <div class="wrap" style="position:relative;z-index:1">
-    <div class="reveal" style="margin-bottom:3.25rem">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Our Capabilities</div>
-
-      <!-- ─── CAPABILITIES HEADLINE ─── -->
-      <h2 class="t-heading sec-hl">One team across<br/>the full stack.</h2>
-
-      <!-- ─── CAPABILITIES INTRO ─── -->
-      <p class="sec-sub">We do not split hardware, software, data, and governance across disconnected vendors. That reduces handoff risk, shortens decision cycles, and produces coherent systems — rather than stitched-together pilots that stall before deployment.</p>
+<!-- ======================= CAPABILITIES ======================= -->
+<section id="capabilities" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">01 Our Capabilities</div>
+      <h2 class="sec-hl">One team across<br>the full stack.</h2>
+      <p class="sec-sub">
+        We do not split hardware, software, data, and governance across disconnected vendors.
+        That reduces handoff risk, shortens decision cycles, and produces coherent systems —
+        rather than stitched-together pilots that stall before deployment.
+      </p>
     </div>
 
-    <div class="bento reveal">
-      <!-- AI Systems -->
-      <div class="b-card b-ai">
+    <div class="bento">
+      <article class="b-ai">
         <div class="b-icon">🧠</div>
-        <div class="b-title">AI Systems</div>
-        <p class="b-desc">We design and deploy machine learning models that run on constrained hardware — edge inference, anomaly detection, drift monitoring, and on-device decision logic. Models are scoped to your memory budget, power envelope, and latency requirements, then validated against real sensor data before deployment.</p>
-        <a href="services.html" class="b-link">
-          Explore services
-          <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-        <div class="b-bottom">
-          <div><span class="b-stat-val">On-device</span><span class="b-stat-key">Inference target</span></div>
-          <div><span class="b-stat-val">Drift</span><span class="b-stat-key">Monitoring included</span></div>
-          <div><span class="b-stat-val">Power-aware</span><span class="b-stat-key">Model sizing</span></div>
+        <h3 class="b-title">AI Systems</h3>
+        <p class="b-desc">
+          We design and deploy machine learning models that run on constrained hardware —
+          edge inference, anomaly detection, drift monitoring, and on-device decision logic.
+          Models are scoped to your memory budget, power envelope, and latency requirements,
+          then validated against real sensor data before deployment.
+        </p>
+        <a href="services.html" class="b-link">Explore services →</a>
+        <div class="b-badge-strip">
+          <span class="b-badge"><strong>On-device</strong> Inference target</span>
+          <span class="b-badge"><strong>Drift</strong> Monitoring included</span>
+          <span class="b-badge"><strong>Power-aware</strong> Model sizing</span>
         </div>
-      </div>
+      </article>
 
-      <!-- IoT Product Development -->
-      <div class="b-card b-iot">
+      <article class="b-iot">
         <div class="b-icon">📡</div>
-        <div class="b-title">IoT Product Development</div>
-        <p class="b-desc">End-to-end device engineering from sensor selection through firmware, connectivity architecture, cloud ingestion, and fleet management. Every design decision accounts for deployment realities — intermittent connectivity, hardware variation, OTA update risk, and operational lifespan.</p>
-        <a href="services.html" class="b-link">
-          Explore services
-          <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </div>
+        <h3 class="b-title">IoT Product Development</h3>
+        <p class="b-desc">
+          End-to-end device engineering from sensor selection through firmware, connectivity
+          architecture, cloud ingestion, and fleet management. Every design decision accounts
+          for deployment realities — intermittent connectivity, hardware variation, OTA update
+          risk, and operational lifespan.
+        </p>
+        <a href="services.html" class="b-link">Explore services →</a>
+      </article>
 
-      <!-- Embedded Intelligence -->
-      <div class="b-card b-emb">
+      <article class="b-emb">
         <div class="b-icon">⚡</div>
-        <div class="b-title">Embedded Intelligence</div>
-        <p class="b-desc">AI inference on microcontrollers and resource-limited processors. We handle model compression, memory profiling, RTOS integration, and energy benchmarking so the intelligence in your device survives real field conditions — not just lab benchmarks.</p>
-        <a href="services.html" class="b-link">
-          Explore services
-          <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </div>
+        <h3 class="b-title">Embedded Intelligence</h3>
+        <p class="b-desc">
+          AI inference on microcontrollers and resource-limited processors. We handle model
+          compression, memory profiling, RTOS integration, and energy benchmarking so the
+          intelligence in your device survives real field conditions — not just lab benchmarks.
+        </p>
+        <a href="services.html" class="b-link">Explore services →</a>
+      </article>
 
-      <!-- End-to-End Engineering -->
-      <div class="b-card b-e2e">
-        <div class="b-text">
+      <article class="b-e2e">
+        <div class="b-e2e-main">
           <div class="b-icon">🔧</div>
-          <div class="b-title">End-to-End Product Engineering</div>
-          <p class="b-desc">From hardware specification through firmware, telemetry pipeline, observability dashboard, and governance documentation — one team, one sprint, one coherent handover. We treat deployment runbooks and capability transfer as first-class deliverables, not afterthoughts.</p>
-          <a href="services.html" class="b-link">
-            Explore services
-            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
+          <h3 class="b-title">End-to-End Product Engineering</h3>
+          <p class="b-desc">
+            From hardware specification through firmware, telemetry pipeline, observability
+            dashboard, and governance documentation — one team, one sprint, one coherent
+            handover. We treat deployment runbooks and capability transfer as first-class
+            deliverables, not afterthoughts.
+          </p>
+          <a href="services.html" class="b-link">Explore services →</a>
         </div>
         <div class="b-badge-strip">
-          <div class="b-metric-badge"><span class="bmb-val">4–6 wks</span><span class="bmb-lbl">Concept to field-ready pilot</span></div>
-          <div class="b-metric-badge"><span class="bmb-val">1 team</span><span class="bmb-lbl">Hardware through governance</span></div>
-          <div class="b-metric-badge"><span class="bmb-val">0 gaps</span><span class="bmb-lbl">Between disciplines</span></div>
+          <span class="b-badge"><strong>4–6 wks</strong> Concept to field-ready pilot</span>
+          <span class="b-badge"><strong>1 team</strong> Hardware through governance</span>
+          <span class="b-badge"><strong>0 gaps</strong> Between disciplines</span>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ══ FEATURED WORK ══════════════════════════════════════════════ -->
-<section id="projects" class="section">
-  <div class="ghost-num">02</div>
-  <div class="wrap" style="position:relative;z-index:1">
-    <div class="reveal" style="margin-bottom:3.25rem">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Featured Work</div>
-
-      <!-- ─── WORK HEADLINE ─── -->
-      <h2 class="t-heading sec-hl">Proof of delivery,<br/>not just ideas.</h2>
-
-      <!-- ─── WORK INTRO ─── -->
-      <p class="sec-sub">Our projects are scoped around deployment realities: power budgets, network instability, data integrity, observability, security, and operational handover. Every engagement is judged by measurable outcomes — not presentation polish.</p>
-    </div>
-
-<<<<<<< HEAD
-    <!-- ══ AGROSENSE AI — FEATURED VENTURE CARD ══════════════════ -->
-    <div class="proj-card-featured reveal">
-      <div class="pcf-ghost">🌱</div>
-      <div class="pcf-body">
-        <div class="pcf-eyebrow">
-          <span class="pcf-category">Climate AgriTech · AI + IoT + Solar</span>
-          <span class="pcf-stage">BRL 5 · Pilot-Stage Venture Concept</span>
-        </div>
-        <div class="proj-title">AgroSense AI</div>
-        <p class="proj-desc">Climate-adaptive precision farming for smallholder farmers. AgroSense AI combines solar-powered IoT soil sensors, LoRaWAN connectivity, satellite imagery, regional AI advisory, SMS/offline access, and embedded parametric micro-insurance to help farmers make better daily decisions under climate uncertainty.</p>
-        <div class="proj-chips">
-          <span class="proj-chip">Solar IoT</span>
-          <span class="proj-chip">LoRaWAN</span>
-          <span class="proj-chip">Satellite AI</span>
-          <span class="proj-chip">SMS Advisory</span>
-          <span class="proj-chip">Climate Risk</span>
-          <span class="proj-chip">Micro-insurance</span>
-        </div>
-        <div class="pcf-foot">
-          <div class="pcf-outcome">Pilot-stage venture concept prepared for the <strong>THRIVE Global Impact Challenge 2026</strong></div>
-          <a href="work.html#agrosense-ai" class="btn btn-primary" style="white-space:nowrap">
-            View AgroSense AI
-            <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="pcf-sidebar">
-        <div class="pcf-sidebar-title">Key targets</div>
-        <div class="pcf-metric">
-          <span class="pcf-metric-val">BRL 5</span>
-          <span class="pcf-metric-key">Hypothesis Testing</span>
-        </div>
-        <div class="pcf-sep"></div>
-        <div class="pcf-metric">
-          <span class="pcf-metric-val">1M</span>
-          <span class="pcf-metric-key">Year 3 Farmer Reach Target</span>
-        </div>
-        <div class="pcf-sep"></div>
-        <div class="pcf-metric">
-          <span class="pcf-metric-val">200K</span>
-          <span class="pcf-metric-key">Insured Plot Target</span>
-        </div>
-        <div class="pcf-cta-wrap">
-          <a href="work.html#agrosense-ai" class="b-link" style="display:inline-flex;align-items:center;gap:.4rem">
-            Full case study
-            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ══ EXISTING 3-CARD GRID ═══════════════════════════════════ -->
-=======
-    <!-- =============================================================
-     FEATURED VENTURE — AgroSense AI
-     Sits above the existing 3-card .proj-grid
-     ============================================================= -->
-<div class="proj-featured">
-  <article class="proj-card-featured" data-cat="climate-agritech">
-    <header class="pcf-header">
-      <div class="pcf-eyebrow">
-        <span class="pcf-eyebrow-dot" aria-hidden="true"></span>
-        <span class="pcf-eyebrow-text">Featured Venture</span>
-        <span class="pcf-eyebrow-divider" aria-hidden="true">·</span>
-        <span class="pcf-eyebrow-context">Climate AgriTech · AI + IoT + Solar</span>
-      </div>
-      <div class="pcf-stage" aria-label="Build Readiness Level 5 — Hypothesis Testing">
-        <span class="pcf-stage-label">BRL 5</span>
-        <span class="pcf-stage-text">Hypothesis Testing</span>
-      </div>
-    </header>
-
-    <div class="pcf-body">
-      <div class="pcf-content">
-        <h3 class="pcf-title">AgroSense AI</h3>
-        <p class="pcf-desc">
-          Climate-adaptive precision farming for smallholder farmers. AgroSense AI combines
-          solar-powered IoT soil sensors, LoRaWAN connectivity, satellite imagery, regional
-          AI advisory, SMS/offline access, and embedded parametric micro-insurance to help
-          farmers make better daily decisions under climate uncertainty.
-        </p>
-
-        <div class="pcf-chips">
-          <span class="proj-chip">Solar IoT</span>
-          <span class="proj-chip">LoRaWAN</span>
-          <span class="proj-chip">Satellite AI</span>
-          <span class="proj-chip">SMS Advisory</span>
-          <span class="proj-chip">Climate Risk</span>
-          <span class="proj-chip">Micro-insurance</span>
-        </div>
-
-        <p class="pcf-outcome">
-          <span class="pcf-outcome-label">Status</span>
-          Pilot-stage venture concept prepared for the THRIVE Global Impact Challenge 2026.
-        </p>
-      </div>
-
-      <aside class="pcf-aside" aria-label="AgroSense AI key targets">
-        <div class="pcf-metric">
-          <span class="pcf-metric-label">Stage</span>
-          <span class="pcf-metric-val">BRL 5</span>
-          <span class="pcf-metric-sub">Hypothesis Testing</span>
-        </div>
-        <div class="pcf-metric">
-          <span class="pcf-metric-label">Year 3 Target</span>
-          <span class="pcf-metric-val">1M</span>
-          <span class="pcf-metric-sub">Farmers reached</span>
-        </div>
-        <div class="pcf-metric">
-          <span class="pcf-metric-label">Insurance Target</span>
-          <span class="pcf-metric-val">200K</span>
-          <span class="pcf-metric-sub">Insured plots</span>
-        </div>
-
-        <a href="work.html#agrosense-ai" class="pcf-cta">
-          <span>View AgroSense AI</span>
-          <span class="pcf-cta-arrow" aria-hidden="true">→</span>
-        </a>
-      </aside>
-    </div>
-  </article>
-</div>
-<!-- END Featured Venture -->
-
-    <!-- ══ EXISTING 3-CARD GRID ═══════════════════════════════════ -->
->>>>>>> 9d7f855e753afdf74a5718f1f9b81fa1601ddb4b
-    <div class="proj-grid">
-      <!-- Case Study 1 -->
-      <div class="proj-card reveal d1">
-        <div class="proj-ghost">01</div>
-        <div class="proj-top">
-          <div class="proj-tag">Environmental Monitoring</div>
-          <div class="proj-metric-big">
-            <span class="pmb-val">6 wks</span>
-            <span class="pmb-unit">concept → field pilot</span>
-          </div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-title">Air Quality Intelligence Network</div>
-          <p class="proj-desc">Low-power sensor nodes ingesting air quality, temperature, and humidity data to a cloud dashboard with real-time anomaly alerts driven by edge AI. Designed for urban deployment with intermittent connectivity and low maintenance access.</p>
-          <div class="proj-chips">
-            <span class="proj-chip">ESP32-S3</span>
-            <span class="proj-chip">TensorFlow Lite</span>
-            <span class="proj-chip">MQTT</span>
-            <span class="proj-chip">AWS IoT Core</span>
-          </div>
-        </div>
-        <div class="proj-foot">
-          <div class="proj-outcome">Outcome: <strong>High fleet uptime</strong> sustained across 3-month pilot with zero critical failures</div>
-          <div class="proj-arrow"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
-        </div>
-      </div>
-
-      <!-- Case Study 2 -->
-      <div class="proj-card reveal d2">
-        <div class="proj-ghost">02</div>
-        <div class="proj-top">
-          <div class="proj-tag">Industrial IoT</div>
-          <div class="proj-metric-big">
-            <span class="pmb-val">3</span>
-            <span class="pmb-unit">failures predicted pre-shutdown</span>
-          </div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-title">Equipment Health Monitoring System</div>
-          <p class="proj-desc">Vibration and thermal sensors on manufacturing equipment with an on-device anomaly detection model. The system identified bearing degradation patterns ahead of failure, enabling planned intervention and eliminating unplanned downtime across the pilot site.</p>
-          <div class="proj-chips">
-            <span class="proj-chip">STM32</span>
-            <span class="proj-chip">Edge Impulse</span>
-            <span class="proj-chip">LoRaWAN</span>
-            <span class="proj-chip">Grafana</span>
-          </div>
-        </div>
-        <div class="proj-foot">
-          <div class="proj-outcome">Outcome: <strong>Zero unplanned downtime</strong> during pilot — significant maintenance cost avoidance</div>
-          <div class="proj-arrow"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
-        </div>
-      </div>
-
-      <!-- Case Study 3 -->
-      <div class="proj-card reveal d3">
-        <div class="proj-ghost">03</div>
-        <div class="proj-top">
-          <div class="proj-tag">Cold Chain Logistics</div>
-          <div class="proj-metric-big">
-            <span class="pmb-val">4</span>
-            <span class="pmb-unit">countries · full audit trail</span>
-          </div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-title">Cold Chain Integrity Tracker</div>
-          <p class="proj-desc">GPS-enabled temperature tracking with on-device compliance logic for pharmaceutical cold chain. Automatic excursion alerts and tamper-resistant audit logs, structured to meet regulatory reporting requirements without manual collation.</p>
-          <div class="proj-chips">
-            <span class="proj-chip">Nordic nRF9160</span>
-            <span class="proj-chip">LwM2M</span>
-            <span class="proj-chip">Azure IoT Hub</span>
-            <span class="proj-chip">Power BI</span>
-          </div>
-        </div>
-        <div class="proj-foot">
-          <div class="proj-outcome">Outcome: <strong>Full audit compliance</strong> across 4-country deployment — zero regulatory exceptions</div>
-          <div class="proj-arrow"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:2.5rem" class="reveal">
-      <a href="work.html" class="btn btn-ghost">
-        View all case studies
-        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PROCESS — ADEPT ════════════════════════════════════════════ -->
-<section id="process" class="section">
-  <div class="ghost-num">03</div>
+<!-- ======================= FEATURED WORK ======================= -->
+<section id="work" class="sec">
   <div class="wrap">
-    <div class="process-grid">
-      <div>
-        <div class="reveal">
-          <div class="eyebrow"><span class="eyebrow-dot pulse"></span>The ADEPT Product Loop</div>
-          <h2 class="t-heading sec-hl">A method built for<br/>intelligent systems.</h2>
-          <p class="sec-sub" style="margin-bottom:2.25rem">Our ADEPT loop grounds every sprint in three proven delivery frameworks — Double Diamond, Google Design Sprint, and Scrum — adapted for the specific demands of AI and IoT product development. Each stage produces concrete outputs, not slide decks.</p>
-        </div>
-
-        <div class="steps reveal d1">
-          <div class="step">
-            <div class="step-num-col"><div class="step-num">A</div><div class="step-connector"></div></div>
-            <div class="step-body">
-              <div class="step-name">Align</div>
-              <p class="step-desc">Define the deployment context, user outcome, system boundaries, and success criteria before any build decisions are made. We surface power budgets, connectivity constraints, compliance obligations, and integration points — so no assumption is carried forward unchecked.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num-col"><div class="step-num">D</div><div class="step-connector"></div></div>
-            <div class="step-body">
-              <div class="step-name">Design</div>
-              <p class="step-desc">Rapid architecture exploration using sprint logic: understand, sketch, decide, prototype, validate. High-risk decisions are stress-tested early — against real hardware, real data, and real operating conditions — before engineering investment is committed.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num-col"><div class="step-num">E</div><div class="step-connector"></div></div>
-            <div class="step-body">
-              <div class="step-name">Engineer</div>
-              <p class="step-desc">Build the device, firmware, data pipeline, and intelligence layer in iterative cycles. Security provisions, observability hooks, and governance controls are integrated from the first sprint — not retrofitted at delivery.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num-col"><div class="step-num">P</div><div class="step-connector"></div></div>
-            <div class="step-body">
-              <div class="step-name">Pilot</div>
-              <p class="step-desc">Deploy a controlled fleet under real operating conditions. Measure uptime, data quality, model performance, and security posture against the success criteria defined in Align. The pilot is a rigorous field experiment — not a demo.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num-col"><div class="step-num">T</div></div>
-            <div class="step-body">
-              <div class="step-name">Transfer</div>
-              <p class="step-desc">Deliver system documentation, operational runbooks, maintenance guides, and training to your team. The goal is full operational independence — your organisation leaves the engagement capable of running, updating, and extending the system without us.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal d2">
-        <div class="proc-panel">
-          <div class="proc-panel-title">Indicative Sprint Timeline</div>
-          <div class="pv-row"><div class="pv-dot" style="background:#00d4f2"></div><div class="pv-label">Align</div><div class="pv-bar-outer"><div class="pv-bar-inner" style="width:18%"></div></div><div class="pv-wk">Week 1</div></div>
-          <div class="pv-row"><div class="pv-dot" style="background:#00bcd6"></div><div class="pv-label">Design</div><div class="pv-bar-outer"><div class="pv-bar-inner" style="width:32%"></div></div><div class="pv-wk">Wk 1–2</div></div>
-          <div class="pv-row"><div class="pv-dot" style="background:#00a8ba"></div><div class="pv-label">Engineer</div><div class="pv-bar-outer"><div class="pv-bar-inner" style="width:72%"></div></div><div class="pv-wk">Wk 2–5</div></div>
-          <div class="pv-row"><div class="pv-dot" style="background:#0090a0"></div><div class="pv-label">Pilot</div><div class="pv-bar-outer"><div class="pv-bar-inner" style="width:88%"></div></div><div class="pv-wk">Wk 5–6</div></div>
-          <div class="pv-row"><div class="pv-dot" style="background:#007080"></div><div class="pv-label">Transfer</div><div class="pv-bar-outer"><div class="pv-bar-inner" style="width:100%"></div></div><div class="pv-wk">Week 6</div></div>
-          <div class="trust-note">
-            <strong>Governance — integrated, not optional</strong>
-            AI risk management aligned to NIST AI RMF · IoT device security to ETSI EN 303 645 / NISTIR 8259 · Secure software development practices throughout · Privacy risk controls from first design session.
-          </div>
-        </div>
-        <div class="proc-ctas">
-          <a href="contact.html" class="btn btn-primary">
-            Book a Discovery Call
-            <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-          <a href="process.html" class="btn btn-ghost">Method Overview</a>
-        </div>
-      </div>
+    <div class="sec-head">
+      <div class="sec-eyebrow">02 Featured Work</div>
+      <h2 class="sec-hl">Proof of delivery,<br>not just ideas.</h2>
+      <p class="sec-sub">
+        Our projects are scoped around deployment realities: power budgets, network
+        instability, data integrity, observability, security, and operational handover.
+        Every engagement is judged by measurable outcomes — not presentation polish.
+      </p>
     </div>
-  </div>
-</section>
 
-<!-- ══ WHY SHEFFY ADEY ════════════════════════════════════════════ -->
-<section id="why" class="section">
-  <div class="ghost-num">04</div>
-  <div class="wrap">
-    <div class="why-grid">
-      <div>
-        <div class="reveal">
-          <div class="eyebrow"><span class="eyebrow-dot"></span>Why Sheffy Adey</div>
+    <!-- ============ AGROSENSE AI — FEATURED VENTURE ============ -->
+    <article class="proj-featured">
+      <header class="proj-featured-header">
+        <div class="proj-featured-eyebrow">
+          <span class="proj-featured-badge">Flagship Venture · In Pilot Design</span>
+          <span class="proj-featured-thrive">⭐ THRIVE Global Impact Challenge 2026</span>
+        </div>
+        <span class="proj-featured-tag">Climate AgriTech · AI + IoT + Solar · BRL 5</span>
+      </header>
 
-          <!-- ─── WHY HEADLINE ─── -->
-          <h2 class="t-heading sec-hl">Why teams choose<br/>Sheffy Adey.</h2>
+      <div class="proj-featured-grid">
+        <div class="proj-featured-main">
+          <div style="display:flex; align-items:center; gap:0.85rem;">
+            <span class="proj-featured-icon">🌱</span>
+            <h3 class="proj-featured-title">AgroSense AI</h3>
+          </div>
 
-          <!-- ─── WHY BODY ─── -->
-          <p class="sec-sub" style="margin-top:.7rem">
-            Connected products fail when engineering disciplines are separated. We keep system design, model behaviour, field constraints, and operational governance in one loop — from discovery through pilot and transfer. That coherence is what makes the difference between a prototype and a deployed system.
+          <p class="proj-featured-desc">
+            <strong style="color:#86efac;">Climate-adaptive precision farming for smallholder farmers.</strong>
+            AgroSense AI combines solar-powered IoT soil sensors, LoRaWAN connectivity, satellite
+            imagery, regional AI advisory, SMS/offline access, and embedded parametric
+            micro-insurance — helping farmers make better daily decisions under climate
+            uncertainty, even without smartphones or broadband.
           </p>
+
+          <div class="proj-tag-row">
+            <span class="proj-tag tag-amber">Solar IoT</span>
+            <span class="proj-tag tag-cyan">LoRaWAN</span>
+            <span class="proj-tag tag-cyan">Satellite AI</span>
+            <span class="proj-tag tag-green">SMS Advisory</span>
+            <span class="proj-tag tag-violet">Climate Risk</span>
+            <span class="proj-tag tag-violet">Micro-insurance</span>
+          </div>
+
+          <p style="font-size:0.88rem; color:var(--tx-3); margin-bottom:1.25rem;">
+            Pilot-stage venture concept prepared for the
+            <strong style="color:#fbbf24;">THRIVE Global Impact Challenge 2026</strong>
+            (SVG Ventures). Designed for the AI &amp; Automation, Water &amp; Waste,
+            Regenerative Agriculture, and ClimateTech themes.
+          </p>
+
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <a href="work.html#agrosense-ai" class="proj-featured-cta">View AgroSense AI</a>
+            <a href="work.html#agrosense-ai" class="btn btn-ghost">Full case study</a>
+          </div>
         </div>
 
-        <div class="why-points reveal d1">
-          <div class="why-pt">
-            <div class="why-chk"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div>
-              <div class="why-pt-title">No handoff gaps between disciplines</div>
-              <p class="why-pt-desc">Device architecture, edge intelligence, telemetry pipelines, and governance are designed together by one team. Decisions that require trade-offs across those layers are resolved in the same sprint — not across vendor boundaries weeks apart.</p>
+        <aside class="impact-card">
+          <div class="impact-card-title">Year 3 Impact Targets</div>
+          <div class="impact-grid">
+            <div class="impact-stat">
+              <div class="impact-stat-val">BRL 5</div>
+              <div class="impact-stat-lbl">Hypothesis Testing</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-stat-val">1M</div>
+              <div class="impact-stat-lbl">Farmer Reach Target</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-stat-val">200K</div>
+              <div class="impact-stat-lbl">Insured Plot Target</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-stat-val">5</div>
+              <div class="impact-stat-lbl">Priority Countries</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-stat-val">30%</div>
+              <div class="impact-stat-lbl">Yield Improvement</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-stat-val">40%</div>
+              <div class="impact-stat-lbl">Water + Input Cost ↓</div>
             </div>
           </div>
-          <div class="why-pt">
-            <div class="why-chk"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div>
-              <div class="why-pt-title">Security and AI governance embedded by design</div>
-              <p class="why-pt-desc">When intelligent systems interact with the physical world, security and responsible AI controls are not optional extras. We implement device security baseline provisions and AI risk management from the first architecture session.</p>
-            </div>
+        </aside>
+      </div>
+    </article>
+
+    <!-- ============ OTHER PROJECTS ============ -->
+    <div class="proj-grid">
+
+      <article class="proj-card">
+        <div class="proj-top">
+          <div class="proj-eyebrow">
+            <span class="proj-num">01</span>
+            <span class="proj-cat">Environmental Monitoring</span>
           </div>
-          <div class="why-pt">
-            <div class="why-chk"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div>
-              <div class="why-pt-title">Built for resource-constrained environments</div>
-              <p class="why-pt-desc">Our team has direct experience designing and operating systems in environments with intermittent power, limited connectivity, and constrained hardware. We do not assume ideal conditions — we engineer for the conditions that actually exist.</p>
-            </div>
+          <div class="proj-metric-big">
+            <span class="proj-metric-num">6 wks</span>
+            <span class="proj-metric-lbl">concept → field pilot</span>
           </div>
-          <div class="why-pt">
-            <div class="why-chk"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div>
-              <div class="why-pt-title">Capability transfer is a deliverable, not a bonus</div>
-              <p class="why-pt-desc">Every engagement produces documentation, runbooks, and training that allows your team to operate and maintain the system independently. We do not design for ongoing dependency — we design for your operational continuity.</p>
-            </div>
+        </div>
+        <h3 class="proj-title">Air Quality Intelligence Network</h3>
+        <p class="proj-desc">
+          Low-power sensor nodes ingesting air quality, temperature, and humidity data to a
+          cloud dashboard with real-time anomaly alerts driven by edge AI. Designed for urban
+          deployment with intermittent connectivity and low maintenance access.
+        </p>
+        <div class="proj-tag-row">
+          <span class="proj-tag">ESP32-S3</span>
+          <span class="proj-tag">TensorFlow Lite</span>
+          <span class="proj-tag">MQTT</span>
+          <span class="proj-tag">AWS IoT Core</span>
+        </div>
+        <div class="proj-outcome">
+          <strong>Outcome:</strong> High fleet uptime sustained across 3-month pilot with zero
+          critical failures
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top">
+          <div class="proj-eyebrow">
+            <span class="proj-num">02</span>
+            <span class="proj-cat">Industrial IoT</span>
           </div>
+          <div class="proj-metric-big">
+            <span class="proj-metric-num">3</span>
+            <span class="proj-metric-lbl">failures predicted pre-shutdown</span>
+          </div>
+        </div>
+        <h3 class="proj-title">Equipment Health Monitoring System</h3>
+        <p class="proj-desc">
+          Vibration and thermal sensors on manufacturing equipment with an on-device anomaly
+          detection model. The system identified bearing degradation patterns ahead of failure,
+          enabling planned intervention and eliminating unplanned downtime across the pilot site.
+        </p>
+        <div class="proj-tag-row">
+          <span class="proj-tag">STM32</span>
+          <span class="proj-tag">Edge Impulse</span>
+          <span class="proj-tag">LoRaWAN</span>
+          <span class="proj-tag">Grafana</span>
+        </div>
+        <div class="proj-outcome">
+          <strong>Outcome:</strong> Zero unplanned downtime during pilot — significant
+          maintenance cost avoidance
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top">
+          <div class="proj-eyebrow">
+            <span class="proj-num">03</span>
+            <span class="proj-cat">Cold Chain Logistics</span>
+          </div>
+          <div class="proj-metric-big">
+            <span class="proj-metric-num">4</span>
+            <span class="proj-metric-lbl">countries · full audit trail</span>
+          </div>
+        </div>
+        <h3 class="proj-title">Cold Chain Integrity Tracker</h3>
+        <p class="proj-desc">
+          GPS-enabled temperature tracking with on-device compliance logic for pharmaceutical
+          cold chain. Automatic excursion alerts and tamper-resistant audit logs, structured
+          to meet regulatory reporting requirements without manual collation.
+        </p>
+        <div class="proj-tag-row">
+          <span class="proj-tag">Nordic nRF9160</span>
+          <span class="proj-tag">LwM2M</span>
+          <span class="proj-tag">Azure IoT Hub</span>
+          <span class="proj-tag">Power BI</span>
+        </div>
+        <div class="proj-outcome">
+          <strong>Outcome:</strong> Full audit compliance across 4-country deployment —
+          zero regulatory exceptions
+        </div>
+      </article>
+
+    </div>
+
+    <div class="sec-cta">
+      <a href="work.html" class="btn btn-ghost">View all case studies →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= METHOD ======================= -->
+<section id="method" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">03 The ADEPT Product Loop</div>
+      <h2 class="sec-hl">A method built for<br>intelligent systems.</h2>
+      <p class="sec-sub">
+        Our ADEPT loop grounds every sprint in three proven delivery frameworks — Double
+        Diamond, Google Design Sprint, and Scrum — adapted for the specific demands of
+        AI and IoT product development. Each stage produces concrete outputs, not slide decks.
+      </p>
+    </div>
+
+    <div class="process-grid">
+      <article class="step">
+        <div class="step-letter">A</div>
+        <h3 class="step-name">Align</h3>
+        <p class="step-desc">
+          Define the deployment context, user outcome, system boundaries, and success criteria
+          before any build decisions are made. We surface power budgets, connectivity
+          constraints, compliance obligations, and integration points — so no assumption
+          is carried forward unchecked.
+        </p>
+      </article>
+
+      <article class="step">
+        <div class="step-letter">D</div>
+        <h3 class="step-name">Design</h3>
+        <p class="step-desc">
+          Rapid architecture exploration using sprint logic: understand, sketch, decide,
+          prototype, validate. High-risk decisions are stress-tested early — against real
+          hardware, real data, and real operating conditions — before engineering investment
+          is committed.
+        </p>
+      </article>
+
+      <article class="step">
+        <div class="step-letter">E</div>
+        <h3 class="step-name">Engineer</h3>
+        <p class="step-desc">
+          Build the device, firmware, data pipeline, and intelligence layer in iterative cycles.
+          Security provisions, observability hooks, and governance controls are integrated from
+          the first sprint — not retrofitted at delivery.
+        </p>
+      </article>
+
+      <article class="step">
+        <div class="step-letter">P</div>
+        <h3 class="step-name">Pilot</h3>
+        <p class="step-desc">
+          Deploy a controlled fleet under real operating conditions. Measure uptime, data
+          quality, model performance, and security posture against the success criteria
+          defined in Align. The pilot is a rigorous field experiment — not a demo.
+        </p>
+      </article>
+
+      <article class="step">
+        <div class="step-letter">T</div>
+        <h3 class="step-name">Transfer</h3>
+        <p class="step-desc">
+          Deliver system documentation, operational runbooks, maintenance guides, and training
+          to your team. The goal is full operational independence — your organisation leaves
+          the engagement capable of running, updating, and extending the system without us.
+        </p>
+      </article>
+    </div>
+
+    <div class="proc-panel">
+      <div class="proc-panel-head">Indicative Sprint Timeline</div>
+      <div class="pv-row"><span class="pv-stage">Align</span><span class="pv-bar-outer"><span class="pv-bar" style="width:18%;"></span></span><span class="pv-week">Week 1</span></div>
+      <div class="pv-row"><span class="pv-stage">Design</span><span class="pv-bar-outer"><span class="pv-bar" style="width:32%;"></span></span><span class="pv-week">Wk 1–2</span></div>
+      <div class="pv-row"><span class="pv-stage">Engineer</span><span class="pv-bar-outer"><span class="pv-bar" style="width:62%;"></span></span><span class="pv-week">Wk 2–5</span></div>
+      <div class="pv-row"><span class="pv-stage">Pilot</span><span class="pv-bar-outer"><span class="pv-bar" style="width:25%;"></span></span><span class="pv-week">Wk 5–6</span></div>
+      <div class="pv-row"><span class="pv-stage">Transfer</span><span class="pv-bar-outer"><span class="pv-bar" style="width:14%;"></span></span><span class="pv-week">Week 6</span></div>
+      <p class="proc-panel-foot">
+        <strong>Governance — integrated, not optional.</strong>
+        AI risk management aligned to NIST AI RMF · IoT device security to ETSI EN 303 645 /
+        NISTIR 8259 · Secure software development practices throughout · Privacy risk
+        controls from first design session.
+      </p>
+      <div class="proc-panel-cta">
+        <a href="#cta" class="btn btn-primary">Book a Discovery Call</a>
+        <a href="method.html" class="btn btn-ghost">Method Overview</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= WHY US ======================= -->
+<section id="why" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">04 Why Sheffy Adey</div>
+      <h2 class="sec-hl">Why teams choose<br>Sheffy Adey.</h2>
+      <p class="sec-sub">
+        Connected products fail when engineering disciplines are separated. We keep system
+        design, model behaviour, field constraints, and operational governance in one loop —
+        from discovery through pilot and transfer. That coherence is what makes the difference
+        between a prototype and a deployed system.
+      </p>
+    </div>
+
+    <div class="why-grid">
+      <article class="why-pt">
+        <h3 class="why-pt-title">No handoff gaps between disciplines</h3>
+        <p>
+          Device architecture, edge intelligence, telemetry pipelines, and governance are
+          designed together by one team. Decisions that require trade-offs across those
+          layers are resolved in the same sprint — not across vendor boundaries weeks apart.
+        </p>
+      </article>
+
+      <article class="why-pt">
+        <h3 class="why-pt-title">Security and AI governance embedded by design</h3>
+        <p>
+          When intelligent systems interact with the physical world, security and responsible
+          AI controls are not optional extras. We implement device security baseline provisions
+          and AI risk management from the first architecture session.
+        </p>
+      </article>
+
+      <article class="why-pt">
+        <h3 class="why-pt-title">Built for resource-constrained environments</h3>
+        <p>
+          Our team has direct experience designing and operating systems in environments with
+          intermittent power, limited connectivity, and constrained hardware. We do not assume
+          ideal conditions — we engineer for the conditions that actually exist.
+        </p>
+      </article>
+
+      <article class="why-pt">
+        <h3 class="why-pt-title">Capability transfer is a deliverable, not a bonus</h3>
+        <p>
+          Every engagement produces documentation, runbooks, and training that allows your
+          team to operate and maintain the system independently. We do not design for ongoing
+          dependency — we design for your operational continuity.
+        </p>
+      </article>
+    </div>
+
+    <div class="vs-table">
+      <div class="vs-head">Sheffy Adey vs. the alternatives</div>
+
+      <div class="vs-row">
+        <div class="vs-them">
+          <div class="vs-label">Generic Innovation Lab</div>
+          <p>Concept workshops and prototype demos. Rarely produces deployable firmware,
+          governed pipelines, or operational handover materials.</p>
+        </div>
+        <div class="vs-us">
+          <div class="vs-label vs-label-us">Sheffy Adey</div>
+          <p>Field-ready device, firmware, data pipeline, and governance documentation —
+          delivered as a single coherent system at sprint end.</p>
         </div>
       </div>
 
-      <div class="reveal d2">
-        <div class="compare-panel">
-          <div class="compare-header"><span class="compare-hdr-lbl">Sheffy Adey vs. the alternatives</span></div>
-          <div class="compare-row">
-            <div class="cc cc-bad"><span class="cc-lbl">Generic Innovation Lab</span>Concept workshops and prototype demos. Rarely produces deployable firmware, governed pipelines, or operational handover materials.</div>
-            <div class="cc cc-good"><span class="cc-lbl">Sheffy Adey</span>Field-ready device, firmware, data pipeline, and governance documentation — delivered as a single coherent system at sprint end.</div>
-          </div>
-          <div class="compare-row">
-            <div class="cc cc-bad"><span class="cc-lbl">Platform Vendor</span>Optimised for their own stack. Security architecture, edge AI, and hardware integration are left to the client to resolve separately.</div>
-            <div class="cc cc-good"><span class="cc-lbl">Sheffy Adey</span>Stack-agnostic. Security baseline, edge intelligence, and cloud integration are part of the same delivery scope.</div>
-          </div>
-          <div class="compare-row">
-            <div class="cc cc-bad"><span class="cc-lbl">Fragmented Agency Model</span>Separate teams for hardware, software, and data. Handoffs introduce inconsistency, delay, and accountability gaps.</div>
-            <div class="cc cc-good"><span class="cc-lbl">Sheffy Adey</span>One delivery team across all layers. Governance and security controls do not fall through the gaps between vendors.</div>
-          </div>
-          <div class="compare-row">
-            <div class="cc cc-bad"><span class="cc-lbl">Hardware-Only Prototyper</span>A device exists, but there is no data pipeline, no intelligence layer, no governance posture, and no runbook for operations.</div>
-            <div class="cc cc-good"><span class="cc-lbl">Sheffy Adey</span>Device + edge AI + cloud integration + operational dashboard + deployment runbook + team training.</div>
-          </div>
+      <div class="vs-row">
+        <div class="vs-them">
+          <div class="vs-label">Platform Vendor</div>
+          <p>Optimised for their own stack. Security architecture, edge AI, and hardware
+          integration are left to the client to resolve separately.</p>
+        </div>
+        <div class="vs-us">
+          <div class="vs-label vs-label-us">Sheffy Adey</div>
+          <p>Stack-agnostic. Security baseline, edge intelligence, and cloud integration are
+          part of the same delivery scope.</p>
+        </div>
+      </div>
+
+      <div class="vs-row">
+        <div class="vs-them">
+          <div class="vs-label">Fragmented Agency Model</div>
+          <p>Separate teams for hardware, software, and data. Handoffs introduce inconsistency,
+          delay, and accountability gaps.</p>
+        </div>
+        <div class="vs-us">
+          <div class="vs-label vs-label-us">Sheffy Adey</div>
+          <p>One delivery team across all layers. Governance and security controls do not
+          fall through the gaps between vendors.</p>
+        </div>
+      </div>
+
+      <div class="vs-row">
+        <div class="vs-them">
+          <div class="vs-label">Hardware-Only Prototyper</div>
+          <p>A device exists, but there is no data pipeline, no intelligence layer, no
+          governance posture, and no runbook for operations.</p>
+        </div>
+        <div class="vs-us">
+          <div class="vs-label vs-label-us">Sheffy Adey</div>
+          <p>Device + edge AI + cloud integration + operational dashboard + deployment
+          runbook + team training.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA ════════════════════════════════════════════════════════ -->
-<section id="cta">
+<!-- ======================= CTA ======================= -->
+<section id="cta" class="bg-photo-section">
   <div class="cta-radial"></div>
   <div class="cta-grid"></div>
   <div class="cta-ghost">Build</div>
-  <div class="cta-inner wrap reveal">
-    <div class="cta-tag">
-      <div style="width:5px;height:5px;border-radius:50%;background:var(--cy);animation:blink 2s infinite"></div>
-      Ready when you are
-    </div>
 
-    <!-- ─── CTA HEADLINE ─── -->
-    <h2 class="t-display cta-hl">Bring us the<br/><em>deployment challenge.</em></h2>
-
-    <!-- ─── CTA BODY ─── -->
-    <p class="cta-sub">If you have a device concept, a constrained environment, or an underperforming pilot, we will map the shortest path to a trustworthy working system — before any commitment is made.</p>
-
+  <div class="wrap cta-inner">
+    <div class="cta-eyebrow">Ready when you are</div>
+    <h2 class="cta-title">Bring us the<br>deployment challenge.</h2>
+    <p class="cta-sub">
+      If you have a device concept, a constrained environment, or an underperforming pilot,
+      we will map the shortest path to a trustworthy working system — before any commitment
+      is made.
+    </p>
     <div class="cta-actions">
-      <a href="contact.html" class="btn btn-white">
-        Book a Discovery Call
-        <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
-      <a href="services.html" class="btn btn-ghost-light">Explore Capabilities</a>
+      <a href="contact.html" class="btn btn-primary">Book a Discovery Call</a>
+      <a href="services.html" class="btn btn-ghost">Explore Capabilities</a>
     </div>
-    <p class="cta-note">No obligation · we respond within one business day with a recommended next step</p>
+    <div class="cta-foot">
+      No obligation · we respond within one business day with a recommended next step
+    </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
-<footer>
-  <div class="wrap">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand-wrap">
-          <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
-            <rect x="2" y="2" width="10" height="10" rx="2.5" stroke="rgba(0,212,242,0.35)" stroke-width="1.2"/>
-            <rect x="18" y="18" width="10" height="10" rx="2.5" fill="rgba(0,212,242,0.12)" stroke="#00d4f2" stroke-width="1.2"/>
-            <circle cx="15" cy="15" r="3.5" fill="#00d4f2"/>
-            <line x1="15" y1="11.5" x2="15" y2="6.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-            <line x1="18.5" y1="15" x2="23.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-            <line x1="15" y1="18.5" x2="15" y2="23.5" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-            <line x1="11.5" y1="15" x2="6.5" y2="15" stroke="rgba(0,212,242,0.45)" stroke-width="1"/>
-          </svg>
-          <span class="footer-brand">Sheffy Adey</span>
-        </div>
-        <p class="footer-desc">An engineering-led AI + IoT product development lab. We help organisations move from concept to dependable field deployment.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Services</div>
-        <div class="footer-links">
-          <a href="services.html">AI Systems</a>
-          <a href="services.html">IoT Product Development</a>
-          <a href="services.html">Embedded Intelligence</a>
-          <a href="services.html">End-to-End Engineering</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Programmes</div>
-        <div class="footer-links">
-          <a href="process.html">Bootcamps</a>
-          <a href="process.html">Sprints</a>
-          <a href="process.html">Partnerships</a>
-          <a href="process.html">Toolkits</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Company</div>
-        <div class="footer-links">
-          <a href="about.html">About</a>
-          <a href="team.html">Team</a>
-          <a href="work.html">Case Studies</a>
-          <a href="faq.html">Knowledge Hub</a>
-          <a href="process.html">Trust &amp; Governance</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
+<!-- ======================= FOOTER ======================= -->
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Sheffy Adey</div>
+      <p>An engineering-led AI + IoT product development lab. We help organisations move
+      from concept to dependable field deployment.</p>
     </div>
-    <div class="footer-rule"></div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Sheffy Adey. All rights reserved.</div>
-      <div class="footer-legal">
-        <a href="#">Privacy &amp; Cookies</a>
-        <a href="#">Accessibility</a>
-        <a href="#">Terms</a>
-      </div>
-      <div class="footer-tag">Built with <span>♥</span> Prototype fast. Validate hard. Scale responsibly.</div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#ai">AI Systems</a></li>
+        <li><a href="services.html#iot">IoT Product Development</a></li>
+        <li><a href="services.html#embedded">Embedded Intelligence</a></li>
+        <li><a href="services.html#e2e">End-to-End Engineering</a></li>
+      </ul>
     </div>
+
+    <div class="footer-col">
+      <h4>Programmes</h4>
+      <ul>
+        <li><a href="programmes.html#bootcamps">Bootcamps</a></li>
+        <li><a href="programmes.html#sprints">Sprints</a></li>
+        <li><a href="programmes.html#partnerships">Partnerships</a></li>
+        <li><a href="toolkits.html">Toolkits</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="work.html">Case Studies</a></li>
+        <li><a href="knowledge.html">Knowledge Hub</a></li>
+        <li><a href="trust.html">Trust &amp; Governance</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <div>© 2025 Sheffy Adey. All rights reserved.</div>
+    <ul class="footer-legal">
+      <li><a href="privacy.html">Privacy &amp; Cookies</a></li>
+      <li><a href="accessibility.html">Accessibility</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+    <div class="footer-tag">Built with ♥ · Prototype fast. Validate hard. Scale responsibly.</div>
   </div>
 </footer>
 
-<script src="main.js"></script>
+<script>
+  // Mobile menu toggle
+  document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+    document.body.classList.toggle('menu-open');
+  });
+</script>
+
 </body>
 </html>
